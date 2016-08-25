@@ -1,0 +1,33 @@
+//transition the transform to try to smooth movement
+$tileSize: 128px;
+
+#outerBoundingBox{
+	position: relative;
+	width: 900px;
+	margin: 0 auto;
+	height: $tileSize*3 + 4;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 2px solid black;
+	z-index: -1;
+}
+#tilemap{
+	position: absolute;
+}
+.tile{
+	box-sizing: border-box;
+	width: $tileSize;
+	height: $tileSize;
+
+}
+img{
+	width: 100%;
+	height: 100%;
+
+}
+#playerTile{
+	@extend .tile;
+	z-index: 100;
+	position: absolute;
+	transform: translate($tileSize*3,$tileSize);
+}

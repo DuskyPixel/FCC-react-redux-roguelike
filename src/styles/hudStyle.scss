@@ -1,0 +1,226 @@
+body{
+	//font-family: 'Roboto';
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 0;
+
+
+}
+h3{
+	font-weight: 900;
+	padding: 0;
+	margin: 0;
+}
+
+#preloadContainer{
+	display: none;
+	width: 5px;
+	height: 5px;
+}
+
+#hudContainer{
+	width: 930px;
+	display: flex;
+	margin: 0 auto;
+
+}
+.goldHud{
+
+	img{
+		width: 25px;
+		height: 30px;
+
+	}
+	span{
+		margin-top: 3px;
+		width: 50px;
+
+		font-size: 20px;
+		color: gold;
+		position: absolute;
+		text-align: center;
+	}
+}
+
+#hudLevelTextPlayer{
+	color: #7BAC6B;
+	margin-left: 3px;
+
+}
+#hudLevelTextMonster{
+	color: #992D2D;
+}
+
+
+#rightHudContainer{
+	background: #230E16;
+	height: 100px;
+	width: auto;
+	border: 2px solid #800000;
+}
+
+#leftHudContainer{
+	background: #060A16;
+	height: 100px;
+	width: auto;
+	border: 2px solid #55b;
+}
+
+#itemButton{
+	cursor: default;
+	margin-top: 1px;
+	border: 2px solid rgb(29, 8, 13);
+	width: 76px;
+	height: 60px;
+	text-align: center;
+	
+	background: rgb(88, 50, 68);
+	color: white;
+	font-size: 2em;
+	display:inline-block;
+	border-radius: 25%;
+	line-height: 55px;
+text-shadow:
+						-1px -1px 0 #000,
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						1px 1px 0 #000;
+
+	&:hover {
+		background: #385c83;
+
+	}
+}
+
+.floater{
+		float: left;
+	}
+
+
+
+
+
+#barContainer{
+	margin-top: 4px;
+	margin-left: 3px;
+
+	border: 2px solid #415C6E;
+	
+}
+
+.barType{
+	cursor: default;
+	color: white;
+
+	min-height: 28px;
+	max-height: 28px;
+	text-align: center;
+
+	&.overlayText{
+		z-index: 100;
+		position: absolute;
+		width: 200px;
+		line-height: 24px;
+		text-shadow:
+						-1px -1px 0 #000,
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						1px 1px 0 #000;
+
+	}
+
+
+	&.full{
+		position: absolute;
+
+		&.life{
+
+			background:darkred;
+			width: 100px;
+
+		}
+		&.mana{
+			background:blue;
+			width: 100px;
+		}
+		&.exp{
+			background: #c64620;
+			width: 100px;
+		}
+	}
+
+	&.lifeEmpty{
+		background: palevioletred;
+		width: 200px;
+		
+	}
+	&.manaEmpty{
+		background: cornflowerblue;
+		width: 200px;
+	}
+	&.expEmpty{
+		background: coral;
+		width: 200px;
+		float: left;
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#attributeContainer{
+	width: 240px;
+
+	background: #060A16;
+	height: 100px;
+	padding-top: 2px;
+	border: 2px solid #55b;
+	border-left: none;
+	padding-left: 3px;
+}
+
+
+
+
+.hudAttriButton{
+	cursor: default;
+	width: 75px;
+	text-align: center;
+	min-height: 30px;
+	background: #828;
+	border-radius: 35%;
+	margin: 1px;
+	border: 2px solid rgb(29, 8, 13);
+	color: white;
+	display: inline-block;
+
+	text-shadow:
+						-1px -1px 0 #000,
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						1px 1px 0 #000;
+	
+	&:hover {
+		background: #385c83;
+
+	}
+
+	
+}
+
+
+.outline{
+	margin-left: 3px;
+	margin-right: 3px;
+	border: 1px solid white;
+}
