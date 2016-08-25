@@ -38,23 +38,23 @@ switch(action.type)
 	}
 
 	case actionTypes.PLAYER_TOUCHED_GOLD: {
-	  return Object.assign({}, state, {
+		return Object.assign({}, state, {
 		gold: state.gold + action.payload
-	  });
+		});
 	}
 
 	case actionTypes.PLAYER_MOVE_X:{
-	  return Object.assign({}, state, {pos: {
-		x: state.pos.x + action.payload,
-		y: state.pos.y
-	  }});
+		return Object.assign({}, state, {pos: {
+			x: state.pos.x + action.payload,
+			y: state.pos.y
+		}});
 	}
 
 	case actionTypes.PLAYER_MOVE_Y:{
-	  return Object.assign({}, state, {pos: {
-		x: state.pos.x,
-		y: state.pos.y + action.payload
-	  }});
+		return Object.assign({}, state, {pos: {
+			x: state.pos.x,
+			y: state.pos.y + action.payload
+		}});
 	}
 
 
@@ -62,7 +62,8 @@ switch(action.type)
 
 
 
-	case actionTypes.PLAYERLEVELUP: {
+	case actionTypes.PLAYER_LEVEL_UP: {
+
 		let newStr = state.strength + action.stats.str;
 		let newVit = state.vitality + action.stats.vit;
 		let newLvl = state.level + 1;
@@ -84,7 +85,7 @@ switch(action.type)
 			life: newMaxLife,
 			maxMana: newMaxMana,
 			mana: newMaxMana,
-			exp: state.expNeededToLevel - state.exp,
+			exp:  state.exp - state.expNeededToLevel,
 			expNeededToLevel: Math.floor(otherTypes.EXP_MULTIPLIER * Math.pow(otherTypes.EXP_EXPONENT, state.level))
 		});
 	}
@@ -92,7 +93,7 @@ switch(action.type)
 	case actionTypes.PLAYER_UPDATE_STATS: {
 
 		return Object.assign({},state, {
-			maxLife: (state.vitality * otherTypes.LIFE_VIT_MULTI) + state.level * otherTypes.LIFE_LVL_MULTI + otherTypes.BASE_LIFE,
+			maxLife: (state.vitality * otherTypes.LIFE_VIT_MULTI) + state.level * otherTypes.LIFE_LVL_MULTI + otherTypes.BASE_LIFE + state.strength * otherTypes.LIFE_STR_MULTI,
 			maxMana: (state.intelligence * otherTypes.MANA_INT_MULTI) + state.level * otherTypes.MANA_LVL_MULTI,
 		});
 	}

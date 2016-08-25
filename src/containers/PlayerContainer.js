@@ -39,6 +39,7 @@ class PlayerContainer extends Component {
 		if(nextProps.player.exp >= nextProps.player.expNeededToLevel){
 			this.props.actions.playerLevelUp();
 		}
+
 		//check if exp is higher than max.. if so dispatch levelup
 		//check if player is dead then dispatch game over
 	}
