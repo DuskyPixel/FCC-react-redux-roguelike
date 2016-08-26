@@ -5,6 +5,8 @@ export default function monsters (state = initialState.monsters, action) {
 	switch(action.type)
 	{
 		case actionTypes.MAPGENERATE:{
+			console.log("MAPGENERATE FROM MONSTER REDUCER");
+			console.log(action.mapGrid.monsterArray);
 			return action.mapGrid.monsterArray;
 		}
 

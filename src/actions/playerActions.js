@@ -130,15 +130,17 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
             if(newMonsterState[i].life <= 0){
                 killedPOS = i;
                 mapNeedsUpdating = true;
+
             }
             break;
         }
     }
 
     if(killedPOS>-1){
-        newMonsterState.splice(killedPOS,1);
+		mobExp = newMonsterState[killedPOS].exp;
+		newMonsterState.splice(killedPOS,1);
         mobGold = getRandInt(player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
-        mobExp = otherTypes.BATTLE_EXP;
+
     }
 
 	return {

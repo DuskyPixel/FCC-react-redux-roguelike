@@ -3,7 +3,7 @@
 This is a [react project for freecodecamp](https://www.freecodecamp.com/challenges/build-a-roguelike-dungeon-crawler-game) using the react redux starter kit [React Slingshot](https://github.com/coryhouse/react-slingshot).
 
 <!---
-
+clean dungeon generator code
 specific amount of mobs per level of different types, floors- 8 +0 mobs, 4 +1 mobs, 2 +2 mobs
 +0 placed randomly but can not be above or below doors
 +1 mobs guard altars	(four altars per level)

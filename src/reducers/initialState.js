@@ -25,9 +25,9 @@ export default{
 		expNeededToLevel: 25, //the amount of exp needed for next level
 
 
-		maxLife: 24,
+		maxLife: 27,
 		maxMana: 14,
-		life: 24,
+		life: 27,
 		mana: 14,
 
 		strength: 3,
@@ -42,6 +42,7 @@ export default{
 			name : "rat",
 			pos : {x: -5, y: -5},
 			life : 7,
+			exp : 4,
 			minAttack : 2,
 			maxAttack : 3
 		}]

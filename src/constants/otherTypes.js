@@ -18,15 +18,18 @@ export const MANA_INT_MULTI = 3;
 export const LIFE_LVL_MULTI = 5;
 export const MANA_LVL_MULTI = 5;
 
-//combat
+//player combat damage
 export const LVL_DMG_MIN_MULTI = 1;
 export const LVL_DMG_MAX_MULTI = 2;
 export const AGI_DMG_INC = 1;
 export const STR_DMG_MIN_MULTI = 1;
 export const STR_DMG_MAX_MULTI = 3;
 
-//exp from battles
-export const BATTLE_EXP = 10;
+//monster generation
+export const MOB_FLOOR_LIFE_MULTI = 9;
+export const MOB_FLOOR_MIN_MULTI = 2;
+export const MOB_FLOOR_MAX_MULTI = 4;
+
 
 //gold found on map or battling
 export const GOLD_PLAYER_LEVEL_MULTIPLIER = 2;
