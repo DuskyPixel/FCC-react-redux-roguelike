@@ -35,7 +35,7 @@ export function moveXEffect(playerID, tileID){
 		sounds.play(audioTypes.SND_COIN);
 		//return ;
 	}
-	else if(tileID === dungeonTypes.OBJ_MOB){
+	else if(tileID >= dungeonTypes.MOBID_RAT && tileID <= dungeonTypes.MOBID_TERRGOTH){
 		sounds.play(audioTypes.SND_ATTACK);
 		return PLAYER_ATTACKS_MOB;
 	}

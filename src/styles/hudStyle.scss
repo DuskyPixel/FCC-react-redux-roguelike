@@ -12,10 +12,27 @@ h3{
 	margin: 0;
 }
 
+#emptyMonsterName{
+	opacity: 0;
+}
+#fullMonsterName{
+	width: 100%;
+	color: yellow;
+	text-align: center;
+}
+
 #preloadContainer{
 	display: none;
 	width: 5px;
 	height: 5px;
+}
+
+section.monsterStats{
+	clear: left;
+	border: 1px solid cyan;
+	line-height: 10px;
+	width: 100%;
+	color: white;
 }
 
 #hudContainer{

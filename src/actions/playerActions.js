@@ -1,6 +1,7 @@
 import * as actionTypes from './../constants/actionTypes';
 import * as otherTypes from './../constants/otherTypes';
 import getRandInt from '../utils/UtilRandInteger';
+import getRandBool from '../utils/UtilRandBool';
 
 
 export const updateStats = () =>{
@@ -12,8 +13,8 @@ export const updateStats = () =>{
 
 export const playerLevelUp = () =>{
 
-	let min = otherTypes.LEVEL_UP_MIN_INCREASE;
-	let max = otherTypes.LEVEL_UP_MAX_INCREASE;
+	const min = otherTypes.LEVEL_UP_MIN_INCREASE;
+	const max = otherTypes.LEVEL_UP_MAX_INCREASE;
 
 	return {
 		type: actionTypes.PLAYER_LEVEL_UP ,
@@ -30,7 +31,7 @@ export const playerLevelUp = () =>{
 
 //altar
 function gettouchAltarObject(posX, posY){
-	let touchAltarObject = {
+	const touchAltarObject = {
 		type: actionTypes.PLAYER_TOUCHED_ALTAR,
 		strength: 0,
         agility: 0,
@@ -43,9 +44,9 @@ function gettouchAltarObject(posX, posY){
         pos: {x: posX, y: posY}
 	};
 
-	let randNum = Math.random();
-	let min = otherTypes.ALTAR_MIN_INCREASE;
-	let max = otherTypes.ALTAR_MAX_INCREASE;
+	const randNum = Math.random();
+	const min = otherTypes.ALTAR_MIN_INCREASE;
+	const max = otherTypes.ALTAR_MAX_INCREASE;
 
 	//16% chance for each attribute
 	if(randNum <= .16){
@@ -113,12 +114,12 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
 	damage += getRandInt(player.level * otherTypes.LVL_DMG_MIN_MULTI, player.level * otherTypes.LVL_DMG_MAX_MULTI);
 	damage += getRandInt(player.strength * otherTypes.STR_DMG_MIN_MULTI, player.strength * otherTypes.STR_DMG_MAX_MULTI);
 
-    let newMonsterState = JSON.parse(JSON.stringify(monsters));
-    let killedPOS = -1;
-    let mapNeedsUpdating = false;
-    let monsterDamage = 0;
-    let mobExp = 0;
-    let mobGold = 0;
+	let newMonsterState = JSON.parse(JSON.stringify(monsters));
+	let killedPOS = -1;
+	let mapNeedsUpdating = false;
+	let monsterDamage = 0;
+	let mobExp = 0;
+	let mobGold = 0;
 
     for(let i in newMonsterState){
         if(newMonsterState[i].pos.x === monsterPositionX && newMonsterState[i].pos.y=== player.pos.y){
@@ -142,6 +143,11 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
         mobGold = getRandInt(player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
 
     }
+
+	//dodge monster attack
+	if(getRandBool(player.agility)){
+		monsterDamage=0;
+	}
 
 	return {
 		type: actionTypes.PLAYER_ATTACKS_MOB,

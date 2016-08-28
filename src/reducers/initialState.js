@@ -42,6 +42,7 @@ export default{
 			name : "rat",
 			pos : {x: -5, y: -5},
 			life : 7,
+			maxLife : 7,
 			exp : 4,
 			minAttack : 2,
 			maxAttack : 3

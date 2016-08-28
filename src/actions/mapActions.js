@@ -1,10 +1,10 @@
 import * as actionTypes from './../constants/actionTypes';
 import getDungeon from "../utils/UtilDungeonGenerator";
 
-export const generateMap = () =>{
+export const generateMap = (dungeonFloor) =>{
 	return {
 		type: actionTypes.MAPGENERATE,
-		mapGrid : getDungeon(30,36)
+		mapGrid : getDungeon(30,36, dungeonFloor)
 			
 	};
 };

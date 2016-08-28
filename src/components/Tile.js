@@ -54,18 +54,13 @@ const Tile = ({tileType}) => {
 		}
 
 		//BELOW TEMP ONLY!!!!!!!!!!!!!!!!!
-		case dungeonTypes.OBJ_PLAYER:
+		/*case dungeonTypes.OBJ_PLAYER:
 		{
 			getTile = "player";
 
 			break;
-		}
-		case dungeonTypes.OBJ_MOB:
-		{
-			getTile = "rat";
+		}*/
 
-			break;
-		}
 		case dungeonTypes.OBJ_ALTAR:
 		{
 			getTile = "altar";
@@ -84,6 +79,42 @@ const Tile = ({tileType}) => {
 
 			break;
 		}
+
+		case dungeonTypes.MOBID_RAT:{
+			getTile = dungeonTypes.STR_MOB_RAT;break;
+		}
+		case dungeonTypes.MOBID_GOBLIN:{
+			getTile = dungeonTypes.STR_MOB_GOBLIN;break;
+		}
+		case dungeonTypes.MOBID_SLIME:{
+			getTile = dungeonTypes.STR_MOB_SLIME;break;
+		}
+		case dungeonTypes.MOBID_GHOUL:{
+			getTile = dungeonTypes.STR_MOB_GHOUL;break;
+		}
+		case dungeonTypes.MOBID_TROLL:{
+			getTile = dungeonTypes.STR_MOB_TROLL;break;
+		}
+		case dungeonTypes.MOBID_OGRE:{
+			getTile = dungeonTypes.STR_MOB_OGRE;break;
+		}
+		case dungeonTypes.MOBID_SOULTAKER:{
+			getTile = dungeonTypes.STR_MOB_SOULTAKER;break;
+		}
+		case dungeonTypes.MOBID_GOLEM:{
+			getTile = dungeonTypes.STR_MOB_GOLEM;break;
+		}
+		case dungeonTypes.MOBID_WYVERN:{
+			getTile = dungeonTypes.STR_MOB_WYVERN;break;
+		}
+		case dungeonTypes.MOBID_DRAGON:{
+			getTile = dungeonTypes.STR_MOB_DRAGON;break;
+		}
+		case dungeonTypes.MOBID_TERRGOTH:{
+			getTile = dungeonTypes.STR_MOB_TERRGOTH;break;
+		}
+
+
 
 		default: getTile = "empty";
 

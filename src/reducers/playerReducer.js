@@ -64,12 +64,12 @@ switch(action.type)
 
 	case actionTypes.PLAYER_LEVEL_UP: {
 
-		let newStr = state.strength + action.stats.str;
-		let newVit = state.vitality + action.stats.vit;
-		let newLvl = state.level + 1;
-		let newInt = state.intelligence + action.stats.int;
-		let newMaxLife = newVit * otherTypes.LIFE_VIT_MULTI + newLvl * otherTypes.LIFE_LVL_MULTI + otherTypes.BASE_LIFE + newStr * otherTypes.LIFE_STR_MULTI;
-		let newMaxMana = newInt * otherTypes.LIFE_VIT_MULTI + newLvl * otherTypes.LIFE_LVL_MULTI;
+		const newStr = state.strength + action.stats.str;
+		const newVit = state.vitality + action.stats.vit;
+		const newLvl = state.level + 1;
+		const newInt = state.intelligence + action.stats.int;
+		const newMaxLife = newVit * otherTypes.LIFE_VIT_MULTI + newLvl * otherTypes.LIFE_LVL_MULTI + otherTypes.BASE_LIFE + newStr * otherTypes.LIFE_STR_MULTI;
+		const newMaxMana = newInt * otherTypes.LIFE_VIT_MULTI + newLvl * otherTypes.LIFE_LVL_MULTI;
 
 		return Object.assign({},state, {
 			level: newLvl,

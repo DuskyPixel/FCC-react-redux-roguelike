@@ -1,12 +1,13 @@
 /* eslint-disable */
 import * as dungeonTypes from './../constants/dungeonTypes';
+import * as monsterTypes from './../constants/monsterTypes';
 import * as otherTypes from './../constants/otherTypes';
 import getRandInt from './UtilRandInteger';
 import getRandBool from './UtilRandBool';
 
 let playerPOS;
 
-export default function generateDungeon(minWidth, maxWidth){
+export default function generateDungeon(minWidth, maxWidth, dungeonFloor){
 
 	let dungeonArray = [];
 	let fillCheckArray = [];
@@ -76,7 +77,7 @@ export default function generateDungeon(minWidth, maxWidth){
 	console.log("player: "+playerPOS.x+" "+playerPOS.y);
 
 	//place monsters, needs to be before placing random ground tiles
-	let arrayOfMonsters = createMonsterArray(dungeonArray);
+	let arrayOfMonsters = createMonsterArray(dungeonArray, dungeonFloor, floorTileCount);
 	dungeonArray = arrayOfMonsters[1];
 	arrayOfMonsters = arrayOfMonsters[0];
 	dungeonArray = placeRandomGroundTiles(dungeonArray); //getRandGroundTile
@@ -293,12 +294,14 @@ function placeSpecialMapObjects(dung){
 				//if dead end then chance to spawn altars or chests
 				if(checkDeadEndTile(q,i,dung)){
 					//chance of something spawning in dead end
-					if(getRandBool(25)){
+					if(getRandBool(50)){
 						if(getRandBool(75)){
 							dung[i][q] = dungeonTypes.OBJ_ALTAR;
+							console.log("SPAWN ALTAR");
 						}
 						else{
 							dung[i][q] = dungeonTypes.OBJ_ITEM;
+							console.log("SPAWN ITEM");
 						}
 					}
 				}
@@ -315,32 +318,126 @@ function placeSpecialMapObjects(dung){
 	return dung
 }
 
-function createMonsterArray(dungeonArray){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 	let monsterArray = [];
-	let dungeonFloor = 1;
+	const tierOneMax = getRandInt(9 + dungeonFloor, 11 + dungeonFloor);
+	const tierTwoMax = getRandInt(1, 2 + dungeonFloor);
+	let tierOneCount = 0;
+	let tierTwoCount = 0;
+
+	let totalTierCount = tierOneMax + tierTwoMax;
+	const MONSTERS = monsterTypes.MONSTERS;
+	let mobTier = 1;
+	totalFloorTiles = totalFloorTiles - 32;
+	let floorTilesLeft = 0 ;
 
 	for(let y=1;y<dungeonArray.length;y+=2){
 		for(let x=3;x<dungeonArray[0].length-3;x++){
-			if(getRandBool(17) && dungeonArray[y][x] === dungeonTypes.GROUND && checkDeadEndTile(x, y, dungeonArray) === false && notBelowOrAboveDoor(x, y, dungeonArray)){
-				dungeonArray[y][x] = dungeonTypes.OBJ_MOB;
-				monsterArray.push({
-					name : "rat",
-					pos : {x: x, y: y},
-					life : dungeonFloor * otherTypes.MOB_FLOOR_LIFE_MULTI,
-					exp : Math.ceil(dungeonFloor * otherTypes.MOB_FLOOR_LIFE_MULTI / 2),
-					minAttack : dungeonFloor + dungeonFloor * otherTypes.MOB_FLOOR_MIN_MULTI,
-					maxAttack : dungeonFloor + dungeonFloor * otherTypes.MOB_FLOOR_MAX_MULTI
-				})
+			if(dungeonArray[y][x] === dungeonTypes.GROUND && checkDeadEndTile(x, y, dungeonArray) === false && notBelowOrAboveDoor(x, y, dungeonArray)){
+
+				floorTilesLeft += 1;
+
+				if(dungeonArray[y][x-1] === dungeonTypes.OBJ_ALTAR || dungeonArray[y][x+1] === dungeonTypes.OBJ_ALTAR 
+					|| dungeonArray[y][x-1] === dungeonTypes.OBJ_ITEM || dungeonArray[y][x+1] === dungeonTypes.OBJ_ITEM){
+
+					mobTier = 2;
+
+					for(let z in MONSTERS){
+						if(MONSTERS[z].floor === dungeonFloor && MONSTERS[z].tier === mobTier){
+							dungeonArray[y][x] = MONSTERS[z].idNum ;
+
+							monsterArray.push({
+								name : MONSTERS[z].name,
+								pos : {x: x, y: y},
+								life : dungeonFloor * MONSTERS[z].baseVitality,
+								maxLife : dungeonFloor * MONSTERS[z].baseVitality,
+								exp : MONSTERS[z].baseVitality + MONSTERS[z].baseAgility + MONSTERS[z].baseStrength ,
+								minAttack : MONSTERS[z].baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
+								maxAttack : MONSTERS[z].baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MONSTERS[z].baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+							});
+							break;
+						}
+
+					}
+				}
+				else if(getRandBool( 100 * ((totalTierCount - (tierTwoCount + tierOneCount)) / (totalFloorTiles - floorTilesLeft)))){
+
+					if((tierTwoCount < tierTwoMax)  && (tierOneCount < tierOneMax)){
+
+						if(getRandBool( 100 * ((tierOneMax - tierOneCount) / (totalTierCount - tierOneCount - tierTwoCount))  )){
+							mobTier = 1;
+							tierOneCount +=1;
+						}
+						else{
+							mobTier = 2;
+							tierTwoCount +=1;
+						}
+					}
+					else if(tierTwoCount < tierTwoMax){
+						mobTier = 2;
+						tierTwoCount +=1;
+					}
+					else if(tierOneCount < tierOneMax){
+						mobTier = 1;
+						tierOneCount += 1;
+					}
+
+					for(let z in MONSTERS){
+						if(MONSTERS[z].floor === dungeonFloor && MONSTERS[z].tier === mobTier){
+							dungeonArray[y][x] = MONSTERS[z].idNum ;
+
+							monsterArray.push({
+								name : MONSTERS[z].name,
+								pos : {x: x, y: y},
+								life : dungeonFloor * MONSTERS[z].baseVitality,
+								maxLife : dungeonFloor * MONSTERS[z].baseVitality,
+								exp : MONSTERS[z].baseVitality + MONSTERS[z].baseAgility + MONSTERS[z].baseStrength ,
+								minAttack : MONSTERS[z].baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
+								maxAttack : MONSTERS[z].baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MONSTERS[z].baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+							});
+							break;
+						}
+
+					}
+				}
+			}
+			else if(dungeonArray[y][x] === dungeonTypes.GROUND){
+				floorTilesLeft += 1;
 			}
 		}
 	}
 
-	console.log("monsters");
-	console.log(monsterArray);
+	console.log(tierOneCount+" / "+tierOneMax);
+	console.table(monsterArray);
 
 	return [monsterArray, dungeonArray];
 }
+
+
+
+
+
+
+
+
+
 
 function placeRandomGroundTiles(dung){
 

@@ -18,13 +18,48 @@ export const OBJ_EMPTY = -1;
 
 export const OBJ_PLAYER = 100;
 
-export const OBJ_MOB = 200;
+//export const OBJ_MOB = 200;
 
 export const OBJ_ALTAR = 400;
 
 export const OBJ_GOLD = 700;
 
 export const OBJ_ITEM = 900;
+
+//mob IDs
+export const MOBID_RAT = 201;
+export const MOBID_GOBLIN = 202;
+
+export const MOBID_SLIME = 203;
+export const MOBID_GHOUL = 204;
+
+export const MOBID_TROLL = 205;
+export const MOBID_OGRE = 206;
+
+export const MOBID_SOULTAKER = 207;
+export const MOBID_GOLEM = 208;
+
+export const MOBID_WYVERN = 209;
+export const MOBID_DRAGON = 210;
+
+export const MOBID_TERRGOTH = 211;
+//mob tile strings
+export const STR_MOB_RAT = "Rat";
+export const STR_MOB_GOBLIN = "Goblin";
+
+export const STR_MOB_SLIME = "Slime";
+export const STR_MOB_GHOUL = "Ghoul";
+
+export const STR_MOB_TROLL = "Troll";
+export const STR_MOB_OGRE = "Ogre";
+
+export const STR_MOB_SOULTAKER = "Soultaker";
+export const STR_MOB_GOLEM = "Golem";
+
+export const STR_MOB_WYVERN = "Wyvern";
+export const STR_MOB_DRAGON = "Dragon";
+
+export const STR_MOB_TERRGOTH = "Terrgoth";
 
 
 //tile strings
@@ -46,14 +81,10 @@ export const STR_PLAYER_ASSASSIN = "playerAssassin";
 export const STR_PLAYER_MAGE = "playerMage";
 export const STR_PLAYER_WARRIOR = "playerWarrior";
 
-export const STR_MOB_RAT = "rat";
+//export const STR_MOB_RAT = "rat";
 export const STR_ALTAR = "altar";
 export const STR_GOLD = "gold";
 export const STR_ITEM = "item";
-
-
-
-
 
 
 /*
