@@ -8,37 +8,42 @@ const HudRight = ({monster}) => {
     let maxLife = 1;
     let imageName = "empty";
     let exp = 0;
-    let minAtk = 0;
-    let maxAtk = 0;
+    let dodge = 0;
+    let avgDmg = 0;
 
     if(Object.keys(monster).length !== 0){
         life = monster.life;
         maxLife = monster.maxLife;
         imageName = monster.name;
         exp = monster.exp;
-        minAtk = monster.minAttack;
-        maxAtk = monster.maxAttack;
+        dodge = monster.dodge;
+        avgDmg = Math.ceil((monster.minAttack + monster.maxAttack) / 2);
+
     }
+
+
 
     return (
         <div id="rightHudContainer">
 
-            
-            <h3 id={imageName === "empty" ? "emptyMonsterName" : "fullMonsterName"}>{imageName}</h3>
-            <section id="barContainer" className="floater">
-                <BigBar current={life} max={maxLife} barName={"life"}/>
+            <div className="flexContainer">
+                <div className="mobSprite"><img src={require('../../images/'+imageName+'.png')} /></div>
 
-            </section>
+                <h3 id={imageName === "empty" ? "emptyMonsterName" : "fullMonsterName"}>{imageName}</h3>
 
-            <section className="floater">
-                <div className="outline"><img src={require('../../images/'+imageName+'.png')} /></div>
-            </section>
+            </div>
 
-            <section className = "monsterStats">
+            <div className="flexContainer">
                 <h6>EXP : {exp} </h6>
-                <h6>Min. Dmg: {minAtk}</h6>
-                <h6>Max. Dmg: {maxAtk}</h6>
-            </section>
+                <h6>Dodge: {dodge}%</h6>
+                <h6>~Dmg: {avgDmg}</h6>
+            </div>
+
+            <div className="mobBarContainer" >
+                <BigBar current={life} max={maxLife} barName={"life"}/>
+            </div>
+
+            
         </div>
     );
 };

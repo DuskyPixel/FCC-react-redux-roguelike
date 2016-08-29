@@ -4,23 +4,18 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 <!---
 
-1.
-specific amount of mobs per level of different types, floors- 8 to 8 plus dungeon floor +0 mobs, 4 +1 mobs, 2 +2 mobs
-+0 placed randomly but can not be above or below doors
-+1 mobs guard altars	(four altars per level)
-+2 mobs guard one chest and the exit
 
-2.
-fix monster HUD
-
-3. stairs on map
-go down stairs, spawn next dungeon floor with new tiers of monsters
-
-4. attribute upgrades
-
-5 boss room on 7th floor just him, terrgoth
-
+TODO
+==-=-=-
+constants - they do not have to be from another file
+each component/container has its own scss file
+improve altar/item spawning
+multifloors - go down stairs, spawn next dungeon floor with new tiers of monsters
+attribute upgrades
+boss room on floor just him with special dungeon generation of just a room
 death in componentWillUpdate
+
+
 
 stats
 strength*	melee dmg*	tiny life*
@@ -32,25 +27,18 @@ luck	    crit chance	crit dmg
 
 
 
+1rat			
+1goblin		
+2slime		
+2ghoul		
+3troll		
+3ogre		
+4golem		
+4soultaker	
+5wyvern		
+5dragon		
 
-constants - they do not have to be from another file
-each component/container has its own scss file
-
-
-
-
-rat			
-goblin		
-slime		
-ghoul		
-troll		
-ogre		
-golem		
-soultaker	
-wyvern		
-dragon		
-
-terrgoth	
+6terrgoth	
 
 
 

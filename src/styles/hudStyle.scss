@@ -27,13 +27,6 @@ h3{
 	height: 5px;
 }
 
-section.monsterStats{
-	clear: left;
-	border: 1px solid cyan;
-	line-height: 10px;
-	width: 100%;
-	color: white;
-}
 
 #hudContainer{
 	width: 930px;
@@ -69,12 +62,6 @@ section.monsterStats{
 }
 
 
-#rightHudContainer{
-	background: #230E16;
-	height: 100px;
-	width: auto;
-	border: 2px solid #800000;
-}
 
 #leftHudContainer{
 	background: #060A16;
@@ -117,7 +104,7 @@ text-shadow:
 
 
 
-#barContainer{
+.barContainer{
 	margin-top: 4px;
 	margin-left: 3px;
 

@@ -361,16 +361,22 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 					for(let z in MONSTERS){
 						if(MONSTERS[z].floor === dungeonFloor && MONSTERS[z].tier === mobTier){
-							dungeonArray[y][x] = MONSTERS[z].idNum ;
+
+							let MOB = MONSTERS[z];
+
+							dungeonArray[y][x] = MOB.idNum ;
+
+							
 
 							monsterArray.push({
-								name : MONSTERS[z].name,
+								name : MOB.name,
 								pos : {x: x, y: y},
-								life : dungeonFloor * MONSTERS[z].baseVitality,
-								maxLife : dungeonFloor * MONSTERS[z].baseVitality,
-								exp : MONSTERS[z].baseVitality + MONSTERS[z].baseAgility + MONSTERS[z].baseStrength ,
-								minAttack : MONSTERS[z].baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
-								maxAttack : MONSTERS[z].baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MONSTERS[z].baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+								maxLife: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+								life: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+								exp : MOB.baseVitality + MOB.baseAgility + MOB.baseStrength ,
+								dodge : MOB.baseAgility,
+								minAttack : MOB.baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
+								maxAttack : MOB.baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI
 							});
 							break;
 						}
@@ -401,16 +407,22 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 					for(let z in MONSTERS){
 						if(MONSTERS[z].floor === dungeonFloor && MONSTERS[z].tier === mobTier){
-							dungeonArray[y][x] = MONSTERS[z].idNum ;
+
+							const MOB = MONSTERS[z];
+
+							dungeonArray[y][x] = MOB.idNum ;
+
+							console.log(MOB.name);
 
 							monsterArray.push({
-								name : MONSTERS[z].name,
+								name : MOB.name,
 								pos : {x: x, y: y},
-								life : dungeonFloor * MONSTERS[z].baseVitality,
-								maxLife : dungeonFloor * MONSTERS[z].baseVitality,
-								exp : MONSTERS[z].baseVitality + MONSTERS[z].baseAgility + MONSTERS[z].baseStrength ,
-								minAttack : MONSTERS[z].baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
-								maxAttack : MONSTERS[z].baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MONSTERS[z].baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+								maxLife: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+								life: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+								dodge : MOB.baseAgility,
+								exp : MOB.baseVitality + MOB.baseAgility + MOB.baseStrength ,
+								minAttack : MOB.baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
+								maxAttack : MOB.baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI
 							});
 							break;
 						}

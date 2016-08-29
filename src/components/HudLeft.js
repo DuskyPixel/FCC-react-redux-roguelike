@@ -18,7 +18,7 @@ const HudLeft = ({player}) => {
                 <div className="outline"><img src={require('../../images/player.png')} /></div>
             </section>
 
-            <section id="barContainer" className="floater">
+            <section className="barContainer floater">
                 <BigBar current={player.life} max={player.maxLife} barName={"life"}/>
                 <BigBar current={player.mana} max={player.maxMana} barName={"mana"}/>
                 <BigBar current={player.exp} max={player.expNeededToLevel} barName={"exp"}/>

@@ -124,7 +124,13 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
     for(let i in newMonsterState){
         if(newMonsterState[i].pos.x === monsterPositionX && newMonsterState[i].pos.y=== player.pos.y){
 
-            newMonsterState[i].life -= damage;
+
+        	if(getRandBool(newMonsterState[i].dodge)){
+        		//monster dodged so do not lose life
+        	}
+            else{
+            	newMonsterState[i].life -= damage;
+            }
 
             monsterDamage = getRandInt(newMonsterState[i].minAttack, newMonsterState[i].maxAttack );
 
