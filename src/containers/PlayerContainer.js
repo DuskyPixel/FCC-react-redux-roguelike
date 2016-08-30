@@ -8,9 +8,7 @@ import * as keyTypes from './../constants/keyTypes';
 
 import * as dungeonTypes from './../constants/dungeonTypes';
 import * as playerActions from '../actions/playerActions';
-import {PLAYER_ATTACKS_MOB} from './../constants/actionTypes';
 
-import {moveYEffect, moveXEffect} from "../utils/UtilMovementEffects";
 
 
 class PlayerContainer extends Component {
@@ -55,11 +53,12 @@ class PlayerContainer extends Component {
 		e.stopPropagation();
 
 		let key = e.keyCode ? e.keyCode : e.which;
-		let playerTileID = this.props.tileGrid[this.props.player.pos.y][this.props.player.pos.x];
+
 		let playerY = this.props.player.pos.y;
 		let playerX = this.props.player.pos.x;
 
-		let actionChecker = "";
+		let tileID = 0;
+
 		let moveDirection = 0;
 
 		switch(key)
@@ -76,13 +75,16 @@ class PlayerContainer extends Component {
 			case keyTypes.KEY_S: {
 				moveDirection = moveDirection < 0 ? -1 : 1;
 
-				if(this.props.tileGrid[playerY + moveDirection][playerX] === dungeonTypes.WALL){
+				tileID = this.props.tileGrid[playerY + moveDirection][playerX];
+
+				if(tileID === dungeonTypes.WALL){
 					return;
 				}
-				else if(this.props.tileGrid[playerY + moveDirection][playerX] === dungeonTypes.DOOR){
+				else if(tileID === dungeonTypes.DOOR){
 					this.props.actions.moveY(moveDirection, true);
 				}
 				else{
+					//door is already opened so do not play sound
 					this.props.actions.moveY(moveDirection, false);
 				}
 
@@ -100,17 +102,15 @@ class PlayerContainer extends Component {
 			case keyTypes.KEY_D: {
 				moveDirection = moveDirection < 0 ? -1 : 1;
 
-				actionChecker = moveXEffect(playerTileID, this.props.tileGrid[playerY][playerX + moveDirection]);
+				tileID = this.props.tileGrid[playerY][playerX + moveDirection];
 
-				if(actionChecker === false){
-
-					return;
+				if(tileID === dungeonTypes.WALL){
+					return false;
 				}
-				else if(actionChecker === PLAYER_ATTACKS_MOB){
+				else if(tileID >= dungeonTypes.MOBID_RAT && tileID <= dungeonTypes.MOBID_TERRGOTH){
 					this.props.actions.playerAttack(this.props.player, playerX + moveDirection, this.props.monsters);
 					return;
 				}
-
 				this.props.actions.moveX(moveDirection);
 
 				break;

@@ -78,12 +78,13 @@ function gettouchAltarObject(posX, posY){
 	return touchAltarObject;
 }
 export const touchedAltar = (posX, posY) =>{
-
+	sounds.play(audioTypes.SND_ALTAR);
 	return gettouchAltarObject(posX, posY);
 };
 
 //gold
 export const touchedGold = (posX, posY, playerLevel, dungeonFloor) =>{
+	sounds.play(audioTypes.SND_COIN);
 	let goldDropAmount = getRandInt(playerLevel, playerLevel * otherTypes.GOLD_PLAYER_LEVEL_MULTIPLIER);
 	goldDropAmount += getRandInt(dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
 	return {
@@ -103,7 +104,7 @@ export const moveX = (moveDirection) =>{
 };
 
 export const moveY = (moveDirection, shouldPlaySound) =>{
-	
+
 	if(shouldPlaySound === true){
 		sounds.play(audioTypes.SND_DOOR);
 	}
@@ -126,6 +127,8 @@ export const playerRegen = (player) =>{
 
 //player attacks/kills monster and monsters damage, exp, and whether to remove mob from map is returned
 export const playerAttack = (player, monsterPositionX, monsters) =>{
+
+	sounds.play(audioTypes.SND_ATTACK);
 
 	let damage = player.agility * otherTypes.AGI_DMG_INC;
 	damage += getRandInt(player.level * otherTypes.LVL_DMG_MIN_MULTI, player.level * otherTypes.LVL_DMG_MAX_MULTI);

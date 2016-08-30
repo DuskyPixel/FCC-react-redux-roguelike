@@ -22,6 +22,7 @@ improve altar/item spawning
 constants - they do not have to be from another file
 each component/container has its own scss file
 add mobs to preloader and items
+credit sounds
 
 stats
 strength*		melee dmg*	tiny life*
