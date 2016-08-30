@@ -1,4 +1,7 @@
-
+.flexContainer{
+	display: flex;
+	flex-direction: row;
+}
 
 #rightHudContainer{
 
@@ -9,10 +12,6 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	
-	.flexContainer{
-		display: flex;
-		flex-direction: row;
-	}
 
 	.mobSprite{
 		min-width: 20%;

@@ -35,9 +35,7 @@ export default{
 		strength: 3,
 		agility: 3,
 		vitality: 3,
-		intelligence: 3,
-		charisma: 3,
-		luck: 3
+		intelligence: 3
 	},
 	monsters: [
 		{

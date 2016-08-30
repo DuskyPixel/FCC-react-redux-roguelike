@@ -64,23 +64,38 @@ class PlayerContainer extends Component {
 
 		switch(key)
 		{
-			
+			// eslint-disable-next-line
+			case keyTypes.KEY_UP:{}
+			// eslint-disable-next-line
 			case keyTypes.KEY_W: {
 				moveDirection = -1;
 			}
 			// eslint-disable-next-line
+			case keyTypes.KEY_DOWN:{}
+			// eslint-disable-next-line
 			case keyTypes.KEY_S: {
 				moveDirection = moveDirection < 0 ? -1 : 1;
-				if(moveYEffect(playerTileID, this.props.tileGrid[playerY + moveDirection][playerX])){
-					this.props.actions.moveY(moveDirection);
+
+				if(this.props.tileGrid[playerY + moveDirection][playerX] === dungeonTypes.WALL){
+					return;
+				}
+				else if(this.props.tileGrid[playerY + moveDirection][playerX] === dungeonTypes.DOOR){
+					this.props.actions.moveY(moveDirection, true);
+				}
+				else{
+					this.props.actions.moveY(moveDirection, false);
 				}
 
 				break;
 			}
-
+			// eslint-disable-next-line
+			case keyTypes.KEY_LEFT:{}
+			// eslint-disable-next-line
 			case keyTypes.KEY_A: {
 				moveDirection = -1;
 			}
+			// eslint-disable-next-line
+			case keyTypes.KEY_RIGHT:{}
 			// eslint-disable-next-line
 			case keyTypes.KEY_D: {
 				moveDirection = moveDirection < 0 ? -1 : 1;
@@ -88,6 +103,7 @@ class PlayerContainer extends Component {
 				actionChecker = moveXEffect(playerTileID, this.props.tileGrid[playerY][playerX + moveDirection]);
 
 				if(actionChecker === false){
+
 					return;
 				}
 				else if(actionChecker === PLAYER_ATTACKS_MOB){

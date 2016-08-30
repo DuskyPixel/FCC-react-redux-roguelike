@@ -4,13 +4,12 @@ const HudAttributes = ({player}) => {
     return (
         <div id="attributeContainer">
 
-            <div className="hudAttriButton">STR: {player.strength}</div>
-            <div className="hudAttriButton">AGI: {player.agility}</div>
-            <div className="hudAttriButton">VIT: {player.vitality}</div>
+                <div className="hudAttriButton">STR: {player.strength}</div>
+                <div className="hudAttriButton">AGI: {player.agility}</div>
 
-            <div className="hudAttriButton">INT: {player.intelligence}</div>
-            <div className="hudAttriButton">CHA: {player.charisma}</div>
-            <div className="hudAttriButton">LUK: {player.luck}</div>
+                <div className="hudAttriButton">VIT: {player.vitality}</div>
+                <div className="hudAttriButton">INT: {player.intelligence}</div>
+
 
         </div>
     );

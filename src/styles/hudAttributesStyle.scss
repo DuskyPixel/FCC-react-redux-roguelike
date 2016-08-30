@@ -1,0 +1,50 @@
+.flexContainer{
+	display: flex;
+	flex-direction: row;
+}
+
+#attributeContainer{
+	cursor: default;
+	
+	background: #060A16;//variable
+	
+	border: 2px solid #55b;
+	font-size: 20px;
+	
+	width: 188px;
+	height: 100px;
+	display: flex;
+	flex-wrap: wrap;
+
+	.hudAttriButton{
+	width: 90px;	
+	height: 45px;
+
+	text-align: center;
+	padding-top: 5px;
+
+	background: #436;
+	border-radius: 20%;
+	margin: 1px;
+	border: 2px solid rgb(29, 8, 13);
+	color: white;
+
+
+	text-shadow:
+						-1px -1px 0 #000,
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						1px 1px 0 #000;
+	
+	&:hover {
+		background: #385c83;
+
+	}
+
+	
+	}
+}
+
+
+
+

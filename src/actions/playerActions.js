@@ -1,5 +1,7 @@
 import * as actionTypes from './../constants/actionTypes';
 import * as otherTypes from './../constants/otherTypes';
+import * as audioTypes from './../constants/audioTypes';
+import * as sounds from '../audio/sounds';
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
 
@@ -12,6 +14,8 @@ export const updateStats = () =>{
 };
 
 export const playerLevelUp = () =>{
+
+	sounds.play(audioTypes.SND_LEVEL_UP);
 
 	const MIN = 1;
 	const MAX = 2;
@@ -98,7 +102,12 @@ export const moveX = (moveDirection) =>{
 	};
 };
 
-export const moveY = (moveDirection) =>{
+export const moveY = (moveDirection, shouldPlaySound) =>{
+	
+	if(shouldPlaySound === true){
+		sounds.play(audioTypes.SND_DOOR);
+	}
+
 	return {
 		type: actionTypes.PLAYER_MOVE_Y,
 		payload: moveDirection
