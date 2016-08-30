@@ -30,6 +30,8 @@ export default{
 		life: 27,
 		mana: 14,
 
+		killedMonster : false, //for regen after killing mob
+
 		strength: 3,
 		agility: 3,
 		vitality: 3,

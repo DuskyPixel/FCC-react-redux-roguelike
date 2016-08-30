@@ -2,14 +2,6 @@
 export const EXP_MULTIPLIER = 12.5;
 export const EXP_EXPONENT = 2;
 
-//the min and max attributes gained during level up
-export const LEVEL_UP_MIN_INCREASE = 1;
-export const LEVEL_UP_MAX_INCREASE = 2;
-
-//the min and max attributes gained from an altar
-export const ALTAR_MIN_INCREASE = 1;
-export const ALTAR_MAX_INCREASE = 2;
-
 //how much life/mana is gained based on attributes and level and base hp
 export const BASE_LIFE = 10;
 export const LIFE_STR_MULTI = 1;
@@ -26,8 +18,7 @@ export const STR_DMG_MIN_MULTI = 2;
 export const STR_DMG_MAX_MULTI = 3;
 
 //monster generation
-export const MOB_FLOOR_LIFE_MULTI = 9;
-export const MOB_DMG_FLOOR_MULTI = 2;
+//export const MOB_FLOOR_LIFE_MULTI = 9;
 export const MOB_DMG_MIN_MULTI = 2;
 export const MOB_DMG_MAX_MULTI = 4;
 

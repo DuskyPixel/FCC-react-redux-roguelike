@@ -25,7 +25,7 @@ class PlayerContainer extends Component {
 	}
 
 	componentWillUpdate(nextProps) {
-		
+
 		if(nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x] === dungeonTypes.OBJ_GOLD){
 			this.props.actions.touchedGold(nextProps.player.pos.x, 
 											nextProps.player.pos.y, 
@@ -39,9 +39,15 @@ class PlayerContainer extends Component {
 		if(nextProps.player.exp >= nextProps.player.expNeededToLevel){
 			this.props.actions.playerLevelUp();
 		}
+		//dont need to check heal if you level up
+		else if(nextProps.player.killedMonster === true){
+			this.props.actions.playerRegen(nextProps.player);
+		}
 
-		//check if exp is higher than max.. if so dispatch levelup
 		//check if player is dead then dispatch game over
+
+		
+
 	}
 
 	movePlayer(e){

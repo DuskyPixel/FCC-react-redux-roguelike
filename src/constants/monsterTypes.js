@@ -25,41 +25,41 @@ export const MONSTERS = [
 		floor : 1,
 		tier : 1,
 		name : STR_MOB_RAT,
-		baseStrength : 2,
-		baseAgility : 1,
-		baseVitality : 1,
+		baseStrength : 1,
+		baseAgility : 3,
+		baseVitality : 5,
 		idNum : 201
 	},
 	{
 		floor : 1,
 		tier : 2,
 		name : STR_MOB_GOBLIN,
-		baseStrength : 3,
-		baseAgility : 3,
-		baseVitality : 3,
+		baseStrength : 2,
+		baseAgility : 5,
+		baseVitality : 10,
 		idNum : 202
 	},
 	
-	 {
+	{
 		floor : 2,
 		tier : 1,
 		name : STR_MOB_SLIME,
 		baseStrength : 4,
 		baseAgility : 5,
-		baseVitality : 4,
+		baseVitality : 6,
 		idNum : 203
 	},
-	 {
+	{
 		floor : 2,
 		tier : 2,
 		name : STR_MOB_GHOUL,
 		baseStrength : 5,
 		baseAgility : 8,
-		baseVitality : 4,
+		baseVitality : 5,
 		idNum : 204
 	},
 	
-	 {
+	{
 		floor : 3,
 		tier : 1,
 		name : STR_MOB_TROLL,
@@ -68,7 +68,7 @@ export const MONSTERS = [
 		baseVitality : 6,
 		idNum : 205
 	},
-	  {
+	{
 		floor : 3,
 		tier : 2,
 		name : STR_MOB_OGRE,
@@ -78,7 +78,7 @@ export const MONSTERS = [
 		idNum : 206
 	},
 	
-	 {
+	{
 		floor : 4,
 		tier : 1,
 		name : STR_MOB_SOULTAKER,
@@ -87,7 +87,7 @@ export const MONSTERS = [
 		baseVitality : 9,
 		idNum : 207
 	},
-	 {
+	{
 		floor : 4,
 		tier : 2,
 		name : STR_MOB_GOLEM,
@@ -97,7 +97,7 @@ export const MONSTERS = [
 		idNum : 208
 	},
 	
-	 {
+	{
 		floor : 5,
 		tier : 1,
 		name : STR_MOB_WYVERN,
@@ -106,7 +106,7 @@ export const MONSTERS = [
 		baseVitality : 10,
 		idNum : 209
 	},
-	 {
+	{
 		floor : 5,
 		tier : 2,
 		name : STR_MOB_DRAGON,

@@ -15,11 +15,30 @@ switch(action.type)
 		}});
 	}
 
+	case actionTypes.PLAYER_REGEN:{
+
+		let newLife = state.life + action.life;
+		let newMana = state.mana + action.mana;
+
+		if(newLife > state.maxLife){
+			newLife = state.maxLife;
+		}
+		if(newMana > state.maxMana){
+			newMana = state.maxMana;
+		}
+
+		return Object.assign({}, state, {
+			life: newLife,
+			mana: newMana
+		});
+	}
+
 	case actionTypes.PLAYER_ATTACKS_MOB:{
 		return Object.assign({}, state, {
 			life : state.life - action.monsterDamage,
 			exp : state.exp + action.mobExp,
-			gold : state.gold + action.mobGold
+			gold : state.gold + action.mobGold,
+			killedMonster : action.killedMonster
 		});
 }
 

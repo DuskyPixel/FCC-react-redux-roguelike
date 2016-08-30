@@ -74,7 +74,7 @@ export default function generateDungeon(minWidth, maxWidth, dungeonFloor){
 	}
 	//need to move over 3 spots since added 3 0's above
 	playerPOS.x = playerPOS.x + 3;
-	console.log("player: "+playerPOS.x+" "+playerPOS.y);
+	
 
 	//place monsters, needs to be before placing random ground tiles
 	let arrayOfMonsters = createMonsterArray(dungeonArray, dungeonFloor, floorTileCount);
@@ -297,11 +297,11 @@ function placeSpecialMapObjects(dung){
 					if(getRandBool(50)){
 						if(getRandBool(75)){
 							dung[i][q] = dungeonTypes.OBJ_ALTAR;
-							console.log("SPAWN ALTAR");
+							
 						}
 						else{
 							dung[i][q] = dungeonTypes.OBJ_ITEM;
-							console.log("SPAWN ITEM");
+						
 						}
 					}
 				}
@@ -337,8 +337,10 @@ function placeSpecialMapObjects(dung){
 function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 	let monsterArray = [];
+	const MIN_TIER_TWO_SPAWN = 1;
+	const MAX_TIER_TWO_SPAWN = 2;
 	const tierOneMax = getRandInt(9 + dungeonFloor, 11 + dungeonFloor);
-	const tierTwoMax = getRandInt(1, 2 + dungeonFloor);
+	const tierTwoMax = getRandInt(MIN_TIER_TWO_SPAWN, MAX_TIER_TWO_SPAWN + dungeonFloor);
 	let tierOneCount = 0;
 	let tierTwoCount = 0;
 
@@ -375,8 +377,8 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 								life: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
 								exp : MOB.baseVitality + MOB.baseAgility + MOB.baseStrength ,
 								dodge : MOB.baseAgility,
-								minAttack : MOB.baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
-								maxAttack : MOB.baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+								minAttack : dungeonFloor + MOB.baseStrength * otherTypes.MOB_DMG_MIN_MULTI + MOB.baseAgility,
+								maxAttack : dungeonFloor + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI + MOB.baseAgility
 							});
 							break;
 						}
@@ -412,17 +414,17 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 							dungeonArray[y][x] = MOB.idNum ;
 
-							console.log(MOB.name);
+				
 
 							monsterArray.push({
 								name : MOB.name,
 								pos : {x: x, y: y},
 								maxLife: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
 								life: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonFloor * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
-								dodge : MOB.baseAgility,
 								exp : MOB.baseVitality + MOB.baseAgility + MOB.baseStrength ,
-								minAttack : MOB.baseVitality + dungeonFloor + dungeonFloor * otherTypes.MOB_DMG_MIN_MULTI,
-								maxAttack : MOB.baseVitality + dungeonFloor * otherTypes.MOB_DMG_FLOOR_MULTI + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI
+								dodge : MOB.baseAgility,
+								minAttack : dungeonFloor + MOB.baseStrength * otherTypes.MOB_DMG_MIN_MULTI + MOB.baseAgility,
+								maxAttack : dungeonFloor + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI + MOB.baseAgility
 							});
 							break;
 						}
@@ -436,7 +438,8 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 		}
 	}
 
-	console.log(tierOneCount+" / "+tierOneMax);
+
+
 	console.table(monsterArray);
 
 	return [monsterArray, dungeonArray];

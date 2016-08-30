@@ -13,63 +13,63 @@ export const updateStats = () =>{
 
 export const playerLevelUp = () =>{
 
-	const min = otherTypes.LEVEL_UP_MIN_INCREASE;
-	const max = otherTypes.LEVEL_UP_MAX_INCREASE;
+	const MIN = 1;
+	const MAX = 2;
 
 	return {
 		type: actionTypes.PLAYER_LEVEL_UP ,
 		stats : {
-			str: getRandInt(min, max),
-			agi: getRandInt(min, max),
-			vit: getRandInt(min, max),
-			int: getRandInt(min, max),
-			cha: getRandInt(min, max),
-			luk: getRandInt(min, max)
+			str: getRandInt(MIN, MAX),
+			agi: getRandInt(MIN, MAX),
+			vit: getRandInt(MIN, MAX),
+			int: getRandInt(MIN, MAX),
+			cha: getRandInt(MIN, MAX),
+			luk: getRandInt(MIN, MAX)
 			}
 	};
 };
 
 //altar
 function gettouchAltarObject(posX, posY){
-	const touchAltarObject = {
+	let touchAltarObject = {
 		type: actionTypes.PLAYER_TOUCHED_ALTAR,
 		strength: 0,
-        agility: 0,
-        vitality: 0,
-        intelligence: 0,
-        charisma: 0,
-        luck: 0,
-        life: 0,
-        mana: 0,
-        pos: {x: posX, y: posY}
+		agility: 0,
+		vitality: 0,
+		intelligence: 0,
+		charisma: 0,
+		luck: 0,
+		life: 0,
+		mana: 0,
+		pos: {x: posX, y: posY}
 	};
 
 	const randNum = Math.random();
-	const min = otherTypes.ALTAR_MIN_INCREASE;
-	const max = otherTypes.ALTAR_MAX_INCREASE;
+	const MIN = 1;
+	const MAX = 2;
 
 	//16% chance for each attribute
 	if(randNum <= .16){
-		touchAltarObject.strength = getRandInt(min, max);
+		touchAltarObject.strength = getRandInt(MIN, MAX);
 	}
 	else if(randNum <= .33 && randNum > .16){
-		touchAltarObject.agility = getRandInt(min, max);
+		touchAltarObject.agility = getRandInt(MIN, MAX);
 	}
 	else if(randNum <= .5 && randNum > .33){
-		touchAltarObject.vitality = getRandInt(min, max);
+		touchAltarObject.vitality = getRandInt(MIN, MAX);
 	}
 	else if(randNum <= .66 && randNum > .5){
-		touchAltarObject.intelligence = getRandInt(min, max);
+		touchAltarObject.intelligence = getRandInt(MIN, MAX);
 	}
 	else if(randNum <= .83 && randNum > .66){
-		touchAltarObject.charisma = getRandInt(min, max);
+		touchAltarObject.charisma = getRandInt(MIN, MAX);
 	}
 	else{
-		touchAltarObject.luck = getRandInt(min, max);
+		touchAltarObject.luck = getRandInt(MIN, MAX);
 	}
 
 	touchAltarObject.life = touchAltarObject.vitality * otherTypes.LIFE_VIT_MULTI + touchAltarObject.strength * otherTypes.LIFE_STR_MULTI;
-    touchAltarObject.mana = touchAltarObject.intelligence * otherTypes.MANA_INT_MULTI;
+	touchAltarObject.mana = touchAltarObject.intelligence * otherTypes.MANA_INT_MULTI;
 
 	return touchAltarObject;
 }
@@ -105,6 +105,14 @@ export const moveY = (moveDirection) =>{
 	};
 };
 
+export const playerRegen = (player) =>{
+	return {
+		type: actionTypes.PLAYER_REGEN,
+		life: player.vitality,
+		mana : player.intelligence
+	};
+};
+
 
 
 //player attacks/kills monster and monsters damage, exp, and whether to remove mob from map is returned
@@ -120,48 +128,53 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
 	let monsterDamage = 0;
 	let mobExp = 0;
 	let mobGold = 0;
+	let killedMonster = false;
 
-    for(let i in newMonsterState){
-        if(newMonsterState[i].pos.x === monsterPositionX && newMonsterState[i].pos.y=== player.pos.y){
+	for(let i in newMonsterState){
+		if(newMonsterState[i].pos.x === monsterPositionX && newMonsterState[i].pos.y=== player.pos.y){
 
 
-        	if(getRandBool(newMonsterState[i].dodge)){
-        		//monster dodged so do not lose life
-        	}
-            else{
-            	newMonsterState[i].life -= damage;
-            }
+			if(getRandBool(newMonsterState[i].dodge) === false){
+				newMonsterState[i].life -= damage;
+			}
 
-            monsterDamage = getRandInt(newMonsterState[i].minAttack, newMonsterState[i].maxAttack );
+			if(newMonsterState[i].life <= 0){
+				killedPOS = i;
+				killedMonster = true;
+				mapNeedsUpdating = true;
 
-            if(newMonsterState[i].life <= 0){
-                killedPOS = i;
-                mapNeedsUpdating = true;
+			}
+			else{
 
-            }
-            break;
-        }
-    }
+				monsterDamage = getRandInt(newMonsterState[i].minAttack, newMonsterState[i].maxAttack );
+			}
 
-    if(killedPOS>-1){
+
+			break;
+		}
+	}
+
+	if(killedPOS>-1){
 		mobExp = newMonsterState[killedPOS].exp;
 		newMonsterState.splice(killedPOS,1);
-        mobGold = getRandInt(player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
+		mobGold = getRandInt(player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
 
-    }
-
+	}
 	//dodge monster attack
-	if(getRandBool(player.agility)){
+	else if(getRandBool(player.agility)){
+
 		monsterDamage=0;
 	}
+
 
 	return {
 		type: actionTypes.PLAYER_ATTACKS_MOB,
 		pos : {x: monsterPositionX, y: player.pos.y},
-        monsterDamage : monsterDamage,
-        newMonsterState : newMonsterState,
-        mobExp : mobExp,
-        mobGold : mobGold,
-        mapNeedsUpdating : mapNeedsUpdating
+		monsterDamage : monsterDamage,
+		newMonsterState : newMonsterState,
+		mobExp : mobExp,
+		mobGold : mobGold,
+		mapNeedsUpdating : mapNeedsUpdating,
+		readyToRegen : killedMonster
 	};
 };
