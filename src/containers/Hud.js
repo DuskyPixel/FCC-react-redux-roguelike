@@ -10,6 +10,7 @@ import HudRight from '../components/HudRight';
 import * as hudActions from '../actions/hudActions';
 
 import {MOBID_RAT, MOBID_TERRGOTH} from './../constants/dungeonTypes';
+import * as hudTypes from './../constants/hudTypes';
 
 
 
@@ -41,14 +42,41 @@ const Hud = (props) => {
 	}
 
 	function hoverMsgCreation(statString, statAmount){
-		const ATTRIBUTE_UPGRADE_COST = 7;
 
-		props.actions.changeHudHoverMsg(`Upgrade ${statString} by 1 for ${statAmount * ATTRIBUTE_UPGRADE_COST} gold`)
+
+		props.actions.changeHudHoverMsg(`Upgrade ${statString} by 1 for ${statAmount * hudTypes.ATTRIBUTE_UPGRADE_COST} gold`);
 	}
 
 	function hoverMsgDeletion(){
 		
-		props.actions.revertHudHoverMsg("Hover to see upgrade cost")	
+		props.actions.revertHudHoverMsg("Hover to see upgrade cost");
+	}
+
+	function buyAttributeUpgrade(attrString){
+
+		let goldCost = 0;
+
+		switch(attrString){
+			case hudTypes.ATTR_STR:{
+				goldCost = props.player.strength * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+			}
+			case hudTypes.ATTR_AGI:{
+				goldCost = props.player.agility * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+			}
+			case hudTypes.ATTR_VIt:{
+				goldCost = props.player.vitality * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+			}
+			case hudTypes.ATTR_INT:{
+				goldCost = props.player.intelligence * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+			}
+		}
+
+		if(props.player.gold < goldCost){
+			console.log("NOT ENOUGH GOLD");
+			return;
+		}
+
+		props.actions.buyAttributeUpgrade(attrString, goldCost);
 	}
 
 
@@ -56,7 +84,7 @@ const Hud = (props) => {
 		<div id="hudContainer">
 
 			<HudLeft player={props.player} />
-			<HudAttributes player={props.player} hud={props.hud} hoverMsgCreation={hoverMsgCreation} hoverMsgDeletion={hoverMsgDeletion}/>
+			<HudAttributes player={props.player} buyAttribute={buyAttributeUpgrade} hud={props.hud} hoverMsgCreation={hoverMsgCreation} hoverMsgDeletion={hoverMsgDeletion}/>
 			<HudRight monster={monster} />
 
 		</div>

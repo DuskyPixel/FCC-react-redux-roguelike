@@ -27,8 +27,6 @@ export const playerLevelUp = () =>{
 			agi: getRandInt(MIN, MAX),
 			vit: getRandInt(MIN, MAX),
 			int: getRandInt(MIN, MAX),
-			cha: getRandInt(MIN, MAX),
-			luk: getRandInt(MIN, MAX)
 			}
 	};
 };
@@ -41,8 +39,6 @@ function gettouchAltarObject(posX, posY){
 		agility: 0,
 		vitality: 0,
 		intelligence: 0,
-		charisma: 0,
-		luck: 0,
 		life: 0,
 		mana: 0,
 		pos: {x: posX, y: posY}
@@ -53,23 +49,17 @@ function gettouchAltarObject(posX, posY){
 	const MAX = 2;
 
 	//16% chance for each attribute
-	if(randNum <= .16){
+	if(randNum <= .25){
 		touchAltarObject.strength = getRandInt(MIN, MAX);
 	}
-	else if(randNum <= .33 && randNum > .16){
+	else if(randNum <= .50 && randNum > .25){
 		touchAltarObject.agility = getRandInt(MIN, MAX);
 	}
-	else if(randNum <= .5 && randNum > .33){
+	else if(randNum <= .75 && randNum > .50){
 		touchAltarObject.vitality = getRandInt(MIN, MAX);
 	}
-	else if(randNum <= .66 && randNum > .5){
-		touchAltarObject.intelligence = getRandInt(MIN, MAX);
-	}
-	else if(randNum <= .83 && randNum > .66){
-		touchAltarObject.charisma = getRandInt(MIN, MAX);
-	}
 	else{
-		touchAltarObject.luck = getRandInt(MIN, MAX);
+		touchAltarObject.intelligence = getRandInt(MIN, MAX);
 	}
 
 	touchAltarObject.life = touchAltarObject.vitality * otherTypes.LIFE_VIT_MULTI + touchAltarObject.strength * otherTypes.LIFE_STR_MULTI;

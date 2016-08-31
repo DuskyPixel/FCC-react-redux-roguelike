@@ -4,6 +4,8 @@ import initialState from './initialState';
 
 export default function player (state = initialState.player, action) {
 
+console.log("PLAYER REDUCER");
+console.log(action);
 
 switch(action.type) 
 {
@@ -13,6 +15,24 @@ switch(action.type)
 			x: action.mapGrid.playerPOS.x,
 			y: action.mapGrid.playerPOS.y
 		}});
+	}
+
+	case actionTypes.HUD_BUY_ATTRIBUTE_UPGRADE:{
+
+		console.log("got to hudbuyupgrade reducer in player");
+
+		return Object.assign({},state, {
+			strength: state.strength + action.upgrade.strength,
+			agility: state.agility + action.upgrade.agility,
+			vitality: state.vitality + action.upgrade.vitality,
+			intelligence: state.intelligence + action.upgrade.intelligence,
+
+			life: state.life + action.upgrade.life,
+			mana: state.mana + action.upgrade.mana,
+			maxLife: state.maxLife + action.upgrade.life,
+			maxMana: state.maxMana + action.upgrade.mana,
+			gold: state.gold - action.upgrade.goldCost
+		});
 	}
 
 	case actionTypes.PLAYER_REGEN:{
@@ -34,13 +54,13 @@ switch(action.type)
 	}
 
 	case actionTypes.PLAYER_ATTACKS_MOB:{
-		return Object.assign({}, state, {
-			life : state.life - action.monsterDamage,
-			exp : state.exp + action.mobExp,
-			gold : state.gold + action.mobGold,
-			killedMonster : action.killedMonster
-		});
-}
+			return Object.assign({}, state, {
+				life : state.life - action.monsterDamage,
+				exp : state.exp + action.mobExp,
+				gold : state.gold + action.mobGold,
+				killedMonster : action.killedMonster
+			});
+	}
 
 	case actionTypes.PLAYER_TOUCHED_ALTAR: {
 		return Object.assign({},state, {
@@ -48,8 +68,6 @@ switch(action.type)
 			agility: state.agility + action.agility,
 			vitality: state.vitality + action.vitality,
 			intelligence: state.intelligence + action.intelligence,
-			charisma: state.charisma + action.charisma,
-			luck: state.luck + action.luck,
 
 			life: state.life + action.life,
 			mana: state.mana + action.mana
@@ -97,8 +115,6 @@ switch(action.type)
 			agility: state.agility + action.stats.agi,
 			vitality: newVit,
 			intelligence: newInt,
-			charisma: state.charisma + action.stats.cha,
-			luck: state.luck + action.stats.luk,
 
 			maxLife: newMaxLife,
 			life: newMaxLife,
