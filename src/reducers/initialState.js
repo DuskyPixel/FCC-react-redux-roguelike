@@ -13,6 +13,9 @@ export default{
 				[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
 				[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 	],
+	hud:{
+		hoverMsg: "Hover to see upgrade cost"
+	},
 	player: {
 		pos: {x: 7, y: 1},
 
@@ -23,7 +26,6 @@ export default{
 		gold: 0,
 
 		expNeededToLevel: 25, //the amount of exp needed for next level
-
 
 		maxLife: 27,
 		maxMana: 14,

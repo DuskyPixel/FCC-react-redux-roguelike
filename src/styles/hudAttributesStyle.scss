@@ -1,8 +1,3 @@
-.flexContainer{
-	display: flex;
-	flex-direction: row;
-}
-
 #attributeContainer{
 	cursor: default;
 	
@@ -10,18 +5,29 @@
 	
 	border: 2px solid #55b;
 	font-size: 20px;
+
+	padding-left: 10px;
+	padding-right: 10px;
 	
-	width: 188px;
+	width: 208px;
 	height: 100px;
-	display: flex;
-	flex-wrap: wrap;
+
+	.flexContainer{
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	h6 {
+		text-align: center;
+		color: green;
+	}
 
 	.hudAttriButton{
 	width: 90px;	
-	height: 45px;
+	height: 30px;
 
 	text-align: center;
-	padding-top: 5px;
+	
 
 	background: #436;
 	border-radius: 20%;
@@ -40,8 +46,6 @@
 		background: #385c83;
 
 	}
-
-	
 	}
 }
 

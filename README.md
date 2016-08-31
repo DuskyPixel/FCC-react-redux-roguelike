@@ -23,6 +23,7 @@ constants - they do not have to be from another file
 each component/container has its own scss file
 add mobs to preloader and items
 credit sounds
+H - help me screen : shows what attributes do, floors till boss, etc
 
 stats
 strength*		melee dmg*	tiny life*
