@@ -49,7 +49,7 @@ const Hud = (props) => {
 
 	function hoverMsgDeletion(){
 		
-		props.actions.revertHudHoverMsg("Hover to see upgrade cost");
+		props.actions.revertHudHoverMsg();
 	}
 
 	function buyAttributeUpgrade(attrString){
@@ -63,7 +63,7 @@ const Hud = (props) => {
 			case hudTypes.ATTR_AGI:{
 				goldCost = props.player.agility * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
 			}
-			case hudTypes.ATTR_VIt:{
+			case hudTypes.ATTR_VIT:{
 				goldCost = props.player.vitality * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
 			}
 			case hudTypes.ATTR_INT:{
@@ -71,8 +71,8 @@ const Hud = (props) => {
 			}
 		}
 
+		
 		if(props.player.gold < goldCost){
-			console.log("NOT ENOUGH GOLD");
 			return;
 		}
 

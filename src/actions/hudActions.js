@@ -15,18 +15,16 @@ export const changeHudHoverMsg = (msg) =>{
 	};
 };
 
-export const revertHudHoverMsg = (msg) =>{
+export const revertHudHoverMsg = () =>{
 	
 	return {
 		type: REVERT_HUD_HOVER_MESSAGE,
-		payload: msg
+		payload: hudTypes.DEFAULT_HOVER_MSG
 			
 	};
 };
 
 export const buyAttributeUpgrade = (attributeString, goldCost) =>{
-
-	console.log("got to hudaction");
 
 	sounds.play(SND_COIN);
 
@@ -38,12 +36,15 @@ export const buyAttributeUpgrade = (attributeString, goldCost) =>{
 
 		life: 0,
 		mana: 0,
-		goldCost: goldCost
+		goldCost: goldCost,
+		hoverMsg: ""
 	};
+	
 
 	switch(attributeString){
 		case hudTypes.ATTR_STR:{
 			upgrade.strength = 1;
+			
 			break;
 		}
 		case hudTypes.ATTR_AGI:{
@@ -62,7 +63,12 @@ export const buyAttributeUpgrade = (attributeString, goldCost) =>{
 
 	upgrade.life = upgrade.vitality * otherTypes.LIFE_VIT_MULTI + upgrade.strength * otherTypes.LIFE_STR_MULTI;
 	upgrade.mana = upgrade.intelligence * otherTypes.MANA_INT_MULTI;
-	
+
+	let updatedGoldCost = Math.floor((goldCost / hudTypes.ATTRIBUTE_UPGRADE_COST) + 1) * 2;
+	upgrade.hoverMsg = `Upgrade ${attributeString} by 1 for ${updatedGoldCost} gold`;
+
+	console.log(upgrade.hoverMsg);
+
 	return {
 		type: HUD_BUY_ATTRIBUTE_UPGRADE,
 		upgrade: upgrade

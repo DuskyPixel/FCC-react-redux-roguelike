@@ -4,9 +4,6 @@ import initialState from './initialState';
 
 export default function player (state = initialState.player, action) {
 
-console.log("PLAYER REDUCER");
-console.log(action);
-
 switch(action.type) 
 {
 
@@ -19,7 +16,6 @@ switch(action.type)
 
 	case actionTypes.HUD_BUY_ATTRIBUTE_UPGRADE:{
 
-		console.log("got to hudbuyupgrade reducer in player");
 
 		return Object.assign({},state, {
 			strength: state.strength + action.upgrade.strength,
