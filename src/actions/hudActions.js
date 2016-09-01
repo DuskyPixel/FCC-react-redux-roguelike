@@ -67,8 +67,6 @@ export const buyAttributeUpgrade = (attributeString, goldCost) =>{
 	let updatedGoldCost = Math.floor((goldCost / hudTypes.ATTRIBUTE_UPGRADE_COST) + 1) * 2;
 	upgrade.hoverMsg = `Upgrade ${attributeString} by 1 for ${updatedGoldCost} gold`;
 
-	console.log(upgrade.hoverMsg);
-
 	return {
 		type: HUD_BUY_ATTRIBUTE_UPGRADE,
 		upgrade: upgrade

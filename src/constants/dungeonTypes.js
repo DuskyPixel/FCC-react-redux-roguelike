@@ -8,10 +8,10 @@ export const GROUND4 = 13;
 export const GROUND5 = 14;
 
 export const DOOR = 2;
+export const TEST_TILE = 3;
 export const OPEN_DOOR = 20;
 
-export const TEST_TILE = 3;
-
+export const STAIRS = 30;
 
 //objects
 export const OBJ_EMPTY = -1;
@@ -73,6 +73,8 @@ export const STR_GROUND_5 = "ground5";
 
 export const STR_DOOR = "door";
 export const STR_OPEN_DOOR = "opendoor";
+
+export const STR_STAIRS = "stairs";
 
 export const STR_EMPTY = "empty";
 

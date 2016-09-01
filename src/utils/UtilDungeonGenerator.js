@@ -266,8 +266,10 @@ function placeSpecialMapObjects(dung){
 
 	//place player
 	let playerFound = false;
+	let stairsFound = false;
 	let randX;
 	let randY;
+	let stairPOS = {};
 	playerPOS = {};
 
 	while(playerFound === false){
@@ -284,13 +286,28 @@ function placeSpecialMapObjects(dung){
 
 	playerPOS = {x: randX, y: randY };
 
+	while(stairsFound === false){
+		randY = getRandInt(0,Math.floor((dung.length-2)/2));
+		randY *= 2;
+		randY += 1;
+
+		randX = getRandInt(1,dung[0].length -1);
+
+		if(randY !== playerPOS.y && checkDeadEndTile(randX, randY, dung)){
+			stairsFound = true;
+		}
+
+	}
+
+	stairPOS = {x: randX, y: randY };
+
 	//place special map objects
 
 	for(let i=1;i<dung.length;i+=2){
 		for(let q=1;q<dung[0].length-1;q++){
 
 			//if not player position then possibly place special object
-			if(randY !== i && randX !== q){
+			if(playerPOS.y !== i && playerPOS.x !== q){
 				//if dead end then chance to spawn altars or chests
 				if(checkDeadEndTile(q,i,dung)){
 					//chance of something spawning in dead end
@@ -315,6 +332,11 @@ function placeSpecialMapObjects(dung){
 			}
 		}
 	}
+
+	dung[stairPOS.y][stairPOS.x] = dungeonTypes.STAIRS;
+
+	console.table(dung);
+
 	return dung
 }
 

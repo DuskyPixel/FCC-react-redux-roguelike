@@ -53,6 +53,12 @@ const Tile = ({tileType}) => {
 			break;
 		}
 
+		case dungeonTypes.STAIRS:{
+			getTile = dungeonTypes.STR_STAIRS;
+
+			break;
+		}
+
 		//BELOW TEMP ONLY!!!!!!!!!!!!!!!!!
 		/*case dungeonTypes.OBJ_PLAYER:
 		{
