@@ -8,10 +8,14 @@ switch(action.type)
 {
 
 	case actionTypes.MAPGENERATE:{
-		return Object.assign({}, state, {pos: {
-			x: action.mapGrid.playerPOS.x,
-			y: action.mapGrid.playerPOS.y
-		}});
+		return Object.assign({}, state, 
+		{
+			pos: {
+				x: action.mapGrid.playerPOS.x,
+				y: action.mapGrid.playerPOS.y},
+			dungeonFloor: action.dungeonFloor
+		}
+		);
 	}
 
 	case actionTypes.HUD_BUY_ATTRIBUTE_UPGRADE:{

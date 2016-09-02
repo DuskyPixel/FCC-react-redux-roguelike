@@ -22,6 +22,7 @@ each component/container has its own scss file
 add mobs to preloader and items
 credit sounds
 H - help me screen : shows what attributes do, floors till boss, etc
+when you hover attribute the normal hover text creates a mouse over box to display how that stat is currently affecting you 		and.. how +1 will affect you
 stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
 
 stats

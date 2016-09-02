@@ -9,6 +9,7 @@ export default function tileGrid (state = initialState.tileGrid, action) {
 	{
 
 		case actionTypes.MAPGENERATE:{
+			
 			newState = action.mapGrid.tileGrid;
 			return newState;
 		}

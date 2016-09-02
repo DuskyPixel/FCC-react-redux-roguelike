@@ -16,6 +16,8 @@ import * as hudTypes from './../constants/hudTypes';
 
 const Hud = (props) => {
 
+	
+
 	let monster = {};
 	if(checkIsMonster( props.tileGrid[props.player.pos.y][props.player.pos.x-1] )){
 		for(let i in props.monsters){

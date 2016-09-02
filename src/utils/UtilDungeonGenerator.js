@@ -10,9 +10,11 @@ let playerPOS;
 export default function generateDungeon(minWidth, maxWidth, dungeonFloor){
 
 	let dungeonArray = [];
+	let arrayOfMonsters = [];
 	let fillCheckArray = [];
 	let floorTileCount = 0
 	let height = 0;
+	playerPOS = {};
 
 	// ***************************** door placed outside of array... it does not get removed because of that
 	// ************************** WITH LAST CHANGE THE DOOR OUTSIDE OF ARRAY NOW GETS CHANGED TO A WALL OUTSIDE OF ARRAY
@@ -27,6 +29,14 @@ export default function generateDungeon(minWidth, maxWidth, dungeonFloor){
 	 +1 mobs guard altars	(four altars per level)
 	 +2 mobs guard one chest and the exit
 	 */
+
+	 if(dungeonFloor === dungeonTypes.BOSS_FLOOR){
+
+	 	dungeonArray = createBossDungeonAndPlacePlayer();
+	 	arrayOfMonsters = createBossArray();
+
+	 	return {tileGrid : dungeonArray, monsterArray : arrayOfMonsters, playerPOS: playerPOS};
+	 }
 
 	while(floorTileCount < 60){
 		dungeonArray = [];
@@ -77,7 +87,7 @@ export default function generateDungeon(minWidth, maxWidth, dungeonFloor){
 	
 
 	//place monsters, needs to be before placing random ground tiles
-	let arrayOfMonsters = createMonsterArray(dungeonArray, dungeonFloor, floorTileCount);
+	arrayOfMonsters = createMonsterArray(dungeonArray, dungeonFloor, floorTileCount);
 	dungeonArray = arrayOfMonsters[1];
 	arrayOfMonsters = arrayOfMonsters[0];
 	dungeonArray = placeRandomGroundTiles(dungeonArray); //getRandGroundTile
@@ -270,7 +280,7 @@ function placeSpecialMapObjects(dung){
 	let randX;
 	let randY;
 	let stairPOS = {};
-	playerPOS = {};
+	
 
 	while(playerFound === false){
 		randY = getRandInt(0,Math.floor((dung.length-2)/2));
@@ -335,7 +345,7 @@ function placeSpecialMapObjects(dung){
 
 	dung[stairPOS.y][stairPOS.x] = dungeonTypes.STAIRS;
 
-	console.table(dung);
+
 
 	return dung
 }
@@ -461,9 +471,6 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 	}
 
 
-
-	console.table(monsterArray);
-
 	return [monsterArray, dungeonArray];
 }
 
@@ -530,4 +537,51 @@ function notBelowOrAboveDoor(x,y,dung){
 		return true;
 	}
 	return false;
+}
+
+function createBossDungeonAndPlacePlayer(){
+
+	let dung = [
+				
+				[0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,dungeonTypes.GROUND,dungeonTypes.GROUND,dungeonTypes.GROUND,dungeonTypes.GROUND,dungeonTypes.MOBID_TERRGOTH,0,0,0],
+				[0,0,0,dungeonTypes.DOOR,0,0,0,0,0,0,0,0],
+				[0,0,0,dungeonTypes.GROUND,0,0,0],
+				[0,0,0,dungeonTypes.DOOR,0,0,0],
+				[0,0,0,dungeonTypes.GROUND,0,0,0],
+				[0,0,0,0,0,0,0]
+				
+	];
+
+	
+	playerPOS.x = 3;
+	playerPOS.y = 5;
+
+	return dung;
+}
+
+function createBossArray(){
+
+	const MONSTERS = monsterTypes.MONSTERS;
+	const MOB_TIER = dungeonTypes.MOB_TIER_BOSS;;
+
+	for(let z in MONSTERS){
+		if(MONSTERS[z].floor === dungeonTypes.BOSS_FLOOR && MONSTERS[z].tier === MOB_TIER){
+
+			const MOB = MONSTERS[z];
+
+			return [{
+				name : MOB.name,
+				pos : {x: dungeonTypes.BOSS_SPAWN_X, y: dungeonTypes.BOSS_SPAWN_Y},
+				maxLife: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonTypes.BOSS_FLOOR * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+				life: (MOB.baseVitality * otherTypes.LIFE_VIT_MULTI) + dungeonTypes.BOSS_FLOOR * otherTypes.LIFE_LVL_MULTI + MOB.baseStrength * otherTypes.LIFE_STR_MULTI,
+				exp : MOB.baseVitality + MOB.baseAgility + MOB.baseStrength ,
+				dodge : MOB.baseAgility,
+				minAttack : dungeonTypes.BOSS_FLOOR + MOB.baseStrength * otherTypes.MOB_DMG_MIN_MULTI + MOB.baseAgility,
+				maxAttack : dungeonTypes.BOSS_FLOOR + MOB.baseStrength * otherTypes.MOB_DMG_MAX_MULTI + MOB.baseAgility
+			}];
+			
+		}
+
+	}
 }

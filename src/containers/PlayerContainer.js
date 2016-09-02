@@ -8,6 +8,7 @@ import * as keyTypes from './../constants/keyTypes';
 
 import * as dungeonTypes from './../constants/dungeonTypes';
 import * as playerActions from '../actions/playerActions';
+import * as mapActions from '../actions/mapActions';
 
 
 
@@ -23,17 +24,22 @@ class PlayerContainer extends Component {
 	}
 
 	componentWillUpdate(nextProps) {
-
-		if(nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x] === dungeonTypes.OBJ_GOLD){
+		const PLAYER_POS_TILE_ID = nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x];
+		if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_GOLD){
 			this.props.actions.touchedGold(nextProps.player.pos.x, 
 											nextProps.player.pos.y, 
 											nextProps.player.level,
 											nextProps.player.dungeonFloor); 
 		}
-		else if(nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x] === dungeonTypes.OBJ_ALTAR){
+		else if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_ALTAR){
 			this.props.actions.touchedAltar(nextProps.player.pos.x, 
 											nextProps.player.pos.y); 
 		}
+		else if(PLAYER_POS_TILE_ID === dungeonTypes.STAIRS){
+
+			this.props.actions.generateMap(nextProps.player.dungeonFloor + 1);
+		}
+
 		if(nextProps.player.exp >= nextProps.player.expNeededToLevel){
 			this.props.actions.playerLevelUp();
 		}
@@ -151,7 +157,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		
-		actions: bindActionCreators(playerActions, dispatch)
+		actions: bindActionCreators(Object.assign({}, playerActions, mapActions), dispatch)
 	};
 }
 

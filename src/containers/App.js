@@ -16,9 +16,11 @@ class App extends Component {
 
 	constructor(props){
 		super(props);
+		
 	}
 
 	componentDidMount() {
+		
 		this.props.actions.generateMap(1); //dungeon floor level 1 at start
 		
 	}

@@ -9,6 +9,7 @@ export const GROUND5 = 14;
 
 export const DOOR = 2;
 export const TEST_TILE = 3;
+export const BOSS_FLOOR = 6;
 export const OPEN_DOOR = 20;
 
 export const STAIRS = 30;
@@ -43,6 +44,12 @@ export const MOBID_WYVERN = 209;
 export const MOBID_DRAGON = 210;
 
 export const MOBID_TERRGOTH = 211;
+
+//for placing boss in final room
+export const MOB_TIER_BOSS = 3;
+export const BOSS_SPAWN_X = 7;
+export const BOSS_SPAWN_Y = 1;
+
 //mob tile strings
 export const STR_MOB_RAT = "Rat";
 export const STR_MOB_GOBLIN = "Goblin";
