@@ -10,15 +10,15 @@ switch(action.type)
 	case actionTypes.PLAYER_USE_HEALTH_POTION:{
 
 		return Object.assign({}, state, {
-			life : action.newLife,
-			healthPotions : action.usedPotion === true ? state.items.healthPotions - 1 : state.items.healthPotions
+			life : action.usedPotion === true ? action.newLife : state.life,
+			healthPotions : action.usedPotion === true ? state.healthPotions - 1 : state.healthPotions
 		});
 	}
 
 	case actionTypes.PLAYER_USE_MANA_POTION:{
 		return Object.assign({}, state, 
 		{
-			mana: action.newMana,
+			mana: action.usedPotion === true ? action.newMana : state.mana,
 			manaPotions : action.usedPotion === true ? state.manaPotions - 1 : state.manaPotions
 		});
 	}

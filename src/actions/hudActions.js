@@ -3,7 +3,7 @@ import * as hudTypes from './../constants/hudTypes';
 import * as otherTypes from './../constants/otherTypes';
 import * as actionTypes from './../constants/actionTypes';
 import * as itemTypes from './../constants/itemTypes';
-import {SND_COIN} from './../constants/audioTypes';
+import {SND_COIN, SND_DRINK_POTION} from './../constants/audioTypes';
 
 export const useHealthPotion = (player) =>{
 
@@ -12,6 +12,7 @@ export const useHealthPotion = (player) =>{
 
 	if(player.life !== player.maxLife && player.healthPotions > 0){
 		usedPotion = true;
+		sounds.play(SND_DRINK_POTION);
 
 		newLife = player.maxLife * itemTypes.POTION_PERCENT;
 		newLife = Math.floor(player.life + newLife);
@@ -34,6 +35,7 @@ export const useManaPotion = (player) =>{
 
 	if(player.mana !== player.maxMana && player.manaPotions > 0){
 		usedPotion = true;
+		sounds.play(SND_DRINK_POTION);
 
 		newMana = player.maxMana * itemTypes.POTION_PERCENT;
 		newMana = Math.floor(player.mana + newMana);
