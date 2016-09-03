@@ -1,3 +1,5 @@
+
+
 body{
 	//font-family: 'Roboto';
 	box-sizing: border-box;
@@ -11,6 +13,26 @@ h3{
 	padding: 0;
 	margin: 0;
 }
+
+
+
+#leftHudContainer{
+	background: $bgColor;
+	height: 100px;
+	width: auto;
+	border: 2px solid #55b;
+	padding-left: 10px;
+	padding-right: 10px;
+	img{
+		margin-left: 12px;
+		
+		width: 64px;
+		height: 64px;
+	}
+}
+
+
+
 
 #emptyMonsterName{
 	opacity: 0;
@@ -29,27 +51,11 @@ h3{
 
 
 #hudContainer{
-	width: 930px;
+	background: green;
+	width: 900px;
 	display: flex;
 	margin: 0 auto;
 
-}
-.goldHud{
-
-	img{
-		width: 25px;
-		height: 30px;
-
-	}
-	span{
-		margin-top: 3px;
-		width: 50px;
-
-		font-size: 20px;
-		color: gold;
-		position: absolute;
-		text-align: center;
-	}
 }
 
 #hudLevelTextPlayer{
@@ -63,38 +69,9 @@ h3{
 
 
 
-#leftHudContainer{
-	background: #060A16;
-	height: 100px;
-	width: auto;
-	border: 2px solid #55b;
-}
 
-#itemButton{
-	cursor: default;
-	margin-top: 1px;
-	border: 2px solid rgb(29, 8, 13);
-	width: 76px;
-	height: 60px;
-	text-align: center;
-	
-	background: rgb(88, 50, 68);
-	color: white;
-	font-size: 2em;
-	display:inline-block;
-	border-radius: 25%;
-	line-height: 55px;
-text-shadow:
-						-1px -1px 0 #000,
-						1px -1px 0 #000,
-						-1px 1px 0 #000,
-						1px 1px 0 #000;
 
-	&:hover {
-		background: #385c83;
 
-	}
-}
 
 .floater{
 		float: left;
@@ -185,8 +162,5 @@ text-shadow:
 
 
 
-.outline{
-	margin-left: 3px;
-	margin-right: 3px;
-	border: 1px solid white;
-}
+
+

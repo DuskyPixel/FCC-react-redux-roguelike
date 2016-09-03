@@ -34,6 +34,16 @@ export default{
 		life: 27,
 		mana: 14,
 
+		weapon : {
+			name: "Dagger",
+			damage : 2,
+			dodge : 0,
+			hp : 0,
+			mp : 3
+		},
+		hpPotions : 1,
+		mpPotions : 0,
+
 		killedMonster : false, //for regen after killing mob
 
 		strength: 3,

@@ -15,7 +15,7 @@ const HudLeft = ({player}) => {
 
             <section className="floater">
                 <h3 id="hudLevelTextPlayer">Level {lvlString}</h3>
-                <div className="outline"><img src={require('../../images/player.png')} /></div>
+                <img src={require('../../images/player.png')} />
             </section>
 
             <section className="barContainer floater">

@@ -3,14 +3,15 @@ import React, { PropTypes } from 'react';
 const HudItems = ({player}) => {
 
     return (
-        <div id="leftHudContainer">
-            <section id="itemButton" className="floater">
+        <div id="itemHudContainer">
+            <div className="itemButton floater">
                 Items
-            </section>
-            <section className="goldHud">
+            </div>
+            <div className="goldHud">
                 <img src={require('../../images/goldHud.png')} />
                 <span>{player.gold}</span>
-            </section>
+            </div>
+  
 
         </div>
     );

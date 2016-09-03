@@ -1,0 +1,55 @@
+
+#itemHudContainer{
+	background: $bgColor;
+	height: 100px;
+	width: auto;
+	border: 2px solid #55b;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	
+
+	.itemButton{
+	cursor: default;
+	margin-top: 1px;
+	border: 2px solid rgb(29, 20, 69);
+	width: 76px;
+	height: 60px;
+	text-align: center;
+	
+	background: rgb(88, 50, 68);
+	color: white;
+	font-size: 2em;
+	display:inline-block;
+	border-radius: 25%;
+	line-height: 55px;
+	text-shadow:
+						-1px -1px 0 #000,
+						1px -1px 0 #000,
+						-1px 1px 0 #000,
+						1px 1px 0 #000;
+
+	&:hover {
+		background: #385c83;
+
+	}
+	}
+
+	.goldHud{
+
+	img{
+		width: 25px;
+		height: 30px;
+
+	}
+	span{
+		margin-top: 3px;
+		width: 50px;
+
+		font-size: 20px;
+		color: gold;
+		position: absolute;
+		text-align: center;
+	}
+}
+}
