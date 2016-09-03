@@ -1,31 +1,87 @@
 
 
-export const hpPotion = {
+export const hpPotion = .23;
 
-};
-
-export const mpPotion = {
-
-};
+export const mpPotion = .23;
 
 
 export const ITEMS = [
 	{
-		floor : 1,
-		tier : 1,
-		name : "Rat",
-		baseStrength : 1,
-		baseAgility : 3,
-		baseVitality : 5,
-		idNum : 201
+		name: "Dagger",
+		damage : 2,
+		dodge : 0,
+		hp : 0,
+		mp : 3
 	},
 	{
-		floor : 1,
-		tier : 2,
-		name : "Goblin",
-		baseStrength : 2,
-		baseAgility : 5,
-		baseVitality : 10,
-		idNum : 202
+		name: "Knife",
+		damage : 3,
+		dodge : 7,
+		hp : 0,
+		mp : 0
+	},
+	{
+		name: "Club",
+		damage : 5,
+		dodge : 0,
+		hp : 5,
+		mp : 0
+	},
+	{
+		name: "Axe",
+		damage : 5,
+		dodge : 0,
+		hp : 10,
+		mp : 0
+	},
+	{
+		name: "Sceptre",
+		damage : 6,
+		dodge : 0,
+		hp : 0,
+		mp : 15
+	},
+	{
+		name: "Glaive",
+		damage : 8,
+		dodge : 14,
+		hp : 0,
+		mp : 0
+	},
+	{
+		name: "Spiked Club",
+		damage : 10,
+		dodge : 0,
+		hp : 20,
+		mp : 0
+	},
+	{
+		name: "Longsword",
+		damage : 11,
+		dodge : 0,
+		hp : 30,
+		mp : 0
+	},
+	{
+		name: "Staff",
+		damage : 9,
+		dodge : 0,
+		hp : 0,
+		mp : 40
+	},
+	{
+		name: "Katana",
+		damage : 12,
+		dodge : 18,
+		hp : 0,
+		mp : 0
+	},
+	{
+		name: "Battle Axe",
+		damage : 14,
+		dodge : 0,
+		hp : 50,
+		mp : 0
 	}
+	
 ];
