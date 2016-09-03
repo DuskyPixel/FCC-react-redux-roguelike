@@ -24,14 +24,6 @@ const HudLeft = ({player}) => {
                 <BigBar current={player.exp} max={player.expNeededToLevel} barName={"exp"}/>
             </section>
 
-            <section id="itemButton" className="floater">
-                Items
-            </section>
-            <section className="goldHud">
-                <img src={require('../../images/goldHud.png')} />
-                <span>{player.gold}</span>
-            </section>
-
         </div>
     );
 };

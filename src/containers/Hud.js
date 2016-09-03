@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 
 import {bindActionCreators} from 'redux';
 
-import HudAttributes from '../components/HudAttributes';
 import HudLeft from '../components/HudLeft';
+import HudItems from '../components/HudItems';
+import HudAttributes from '../components/HudAttributes';
 import HudRight from '../components/HudRight';
 
 import * as hudActions from '../actions/hudActions';
@@ -86,6 +87,7 @@ const Hud = (props) => {
 		<div id="hudContainer">
 
 			<HudLeft player={props.player} />
+			<HudItems player={props.player} />
 			<HudAttributes player={props.player} buyAttribute={buyAttributeUpgrade} hud={props.hud} hoverMsgCreation={hoverMsgCreation} hoverMsgDeletion={hoverMsgDeletion}/>
 			<HudRight monster={monster} />
 

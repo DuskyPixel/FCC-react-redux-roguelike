@@ -5,11 +5,36 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 <!---
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 TODO
 ==-=-=-
 
-multifloors - go down stairs, spawn next dungeon floor with new tiers of monsters
-boss room on floor just him with special dungeon generation of just a room
+weapon component
+User Story: I have a weapon. I can pick up a better weapon. 
+
+
+
+User Story: I can pick up health items.
+
+User Story: All the items are arranged at random.
+
+User Story: I do damage based off of my level and my weapon. 
+
+User Story: When I find and beat the boss, I win.
+
 death in componentWillUpdate
 
 
@@ -21,6 +46,7 @@ constants - they do not have to be from another file
 each component/container has its own scss file
 add mobs to preloader and items
 credit sounds
+attribute component
 H - help me screen : shows what attributes do, floors till boss, etc
 when you hover attribute the normal hover text creates a mouse over box to display how that stat is currently affecting you 		and.. how +1 will affect you
 stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
@@ -45,6 +71,30 @@ intelligence  	max mana	mp regen after battle*
 5dragon		
 
 6terrgoth	
+
+0	Dagger
+1	Knife	Club
+2	Axe	Sceptre	
+3		Glaive	Katana
+4	LongSword	Staff
+5	Spiked Club	BattleAxe
+
+
+
+			DMG	DOG	HP	MP
+Dagger		2			3
+Knife		3	10		
+Club		5		5	
+Axe			5		10	
+Sceptre		6			15
+Glaive		8	14		
+Spiked Club	10		20	
+Longsword	11		30	
+Staff		9			40
+Katana		12	18		
+Battle Axe	14		50	
+
+
 
 
 
