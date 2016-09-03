@@ -13,16 +13,22 @@ const HudLeft = ({player}) => {
     return (
         <div id="leftHudContainer">
 
-            <section className="floater">
+            <div className="floater">
                 <h3 id="hudLevelTextPlayer">Level {lvlString}</h3>
-                <img src={require('../../images/player.png')} />
-            </section>
+                <h5>Dungeon Floor {player.dungeonFloor}</h5>
+                <div className="goldHud">
+                    <img src={require('../../images/goldHud.png')} />
+                    <span>{player.gold}</span>
+                </div>
+            </div>
 
-            <section className="barContainer floater">
+            <div className="barContainer floater">
                 <BigBar current={player.life} max={player.maxLife} barName={"life"}/>
                 <BigBar current={player.mana} max={player.maxMana} barName={"mana"}/>
                 <BigBar current={player.exp} max={player.expNeededToLevel} barName={"exp"}/>
-            </section>
+            </div>
+
+
 
         </div>
     );
