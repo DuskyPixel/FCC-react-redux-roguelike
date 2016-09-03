@@ -1,9 +1,6 @@
 
-
-export const hpPotion = .23;
-
-export const mpPotion = .23;
-
+//% to increase when potions are used
+export const POTION_PERCENT = .23;
 
 export const ITEMS = [
 	{

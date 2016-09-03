@@ -7,6 +7,22 @@ export default function player (state = initialState.player, action) {
 switch(action.type) 
 {
 
+	case actionTypes.PLAYER_USE_HEALTH_POTION:{
+
+		return Object.assign({}, state, {
+			life : action.newLife,
+			healthPotions : action.usedPotion === true ? state.items.healthPotions - 1 : state.items.healthPotions
+		});
+	}
+
+	case actionTypes.PLAYER_USE_MANA_POTION:{
+		return Object.assign({}, state, 
+		{
+			mana: action.newMana,
+			manaPotions : action.usedPotion === true ? state.manaPotions - 1 : state.manaPotions
+		});
+	}
+
 	case actionTypes.MAPGENERATE:{
 		return Object.assign({}, state, 
 		{
@@ -14,8 +30,7 @@ switch(action.type)
 				x: action.mapGrid.playerPOS.x,
 				y: action.mapGrid.playerPOS.y},
 			dungeonFloor: action.dungeonFloor
-		}
-		);
+		});
 	}
 
 	case actionTypes.HUD_BUY_ATTRIBUTE_UPGRADE:{

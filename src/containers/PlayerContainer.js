@@ -24,6 +24,10 @@ class PlayerContainer extends Component {
 	}
 
 	componentWillUpdate(nextProps) {
+
+		console.log("POTION USED");
+		console.log(nextProps.player.items);
+
 		const PLAYER_POS_TILE_ID = nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x];
 		if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_GOLD){
 			this.props.actions.touchedGold(nextProps.player.pos.x, 

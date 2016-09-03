@@ -93,6 +93,10 @@ export const moveX = (moveDirection) =>{
 	};
 };
 
+
+
+
+
 export const moveY = (moveDirection, shouldPlaySound) =>{
 
 	if(shouldPlaySound === true){
