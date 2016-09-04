@@ -1,6 +1,7 @@
 $potionFontColor : #70A0FF;
 
 #itemHudContainer{
+	cursor: default;
 	background: $bgColor;
 	height: 100px;
 	width: auto;
@@ -11,7 +12,7 @@ $potionFontColor : #70A0FF;
 	
 
 	.itemButton{
-		cursor: default;
+		
 		margin-top: 1px;
 		border: 2px solid rgb(29, 20, 69);
 		width: 76px;
@@ -54,16 +55,91 @@ $potionFontColor : #70A0FF;
 
 	
 	#weaponContainer{
+		border: 1px solid navy;
 		color: lightgrey;
 		margin-top: 5px;
 		border-radius: 5%;
+		padding: 5px;
 		text-align: left;
 		position: absolute;
-		font-size: 16px !important;
+		font-size: 12px !important;
 		z-index: 1000;
-		width: auto;
+		
 		height: auto;
 		background: #338;
+
+		.flexor{
+			display: flex;
+			color: skyblue;
+			font-size: 1.3em;
+			div{
+				width: 100%;
+				text-align: center;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				font-weight: bold;
+			}
+		}
+
+		.weapon{
+			text-align: center;
+			display: flex;
+			width: 500px;
+			color: grey;
+			span.stat{
+				flex: 1 0 0;
+				border: 1px solid black;
+
+			}
+			span.other{
+				flex: 2 0 0;
+				border: 1px solid black;
+				&:hover{
+					background: red;
+				}
+			}
+			span.weaponName{
+				flex: 3 0 0;
+
+				img{
+					width: 32px;
+					height: 32px;
+				}
+			}
+			&:hover{
+				color: maroon;
+				background: skyblue;
+			}
+
+			.header{
+
+			}
+		}
+		.equipped{
+			color: lime;
+		}
+
+		.header{
+			text-align: center;
+			display: flex;
+			color: black;
+			font-weight: bold;
+			background: #88B;
+
+			span.stat{
+				flex: 1 0 0;
+				border: 1px solid black;
+
+			}
+			span.other{
+				flex: 2 0 0;
+				border: 1px solid black;
+			}
+			span.weaponName{
+				flex: 3 0 0;
+			}
+		}
+		
 	}
 
 }

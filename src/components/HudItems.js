@@ -5,8 +5,10 @@ const HudItems = ({player, clickHealthPotion, clickManaPotion}) => {
 
     return (
         <div id="itemHudContainer">
-            <div className="itemButton floater">
-                Items
+            <div className="floater">
+                <div className="itemButton">
+                    Items
+                </div>
                 <Weapons player={player} />
             </div>
 
