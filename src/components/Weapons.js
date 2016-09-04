@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import getPlayerDamage from '../utils/UtilCalculatePlayerDamage';
+import {getPlayerDamage} from '../utils/UtilCalculatePlayerDamage';
 import getPlayerDodge from '../utils/UtilCalculatePlayerDodge';
 import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';

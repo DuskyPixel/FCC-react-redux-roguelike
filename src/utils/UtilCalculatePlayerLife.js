@@ -5,7 +5,6 @@ export default function getPlayerLife(player) {
 	life += player.level * otherTypes.LIFE_LVL_MULTI;
 	life += otherTypes.BASE_LIFE;
 	life += player.strength * otherTypes.LIFE_STR_MULTI;
-	console.log("first life: "+life);
 
 	for(let i in player.weapons){
 		if(player.weapons[i]){
@@ -14,8 +13,6 @@ export default function getPlayerLife(player) {
 			}
 		}
 	}
-
-	console.log("secon life: "+life);
 	
 	return life;
 }

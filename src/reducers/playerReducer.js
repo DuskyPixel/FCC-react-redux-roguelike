@@ -7,6 +7,14 @@ export default function player (state = initialState.player, action) {
 switch(action.type) 
 {
 
+	case actionTypes.PLAYER_TOUCHED_ITEM:{
+		console.log(state.gold);
+		return Object.assign({}, state, {
+			healthPotions : action.foundHealthPotion === true ? state.healthPotions + 1 : state.healthPotions,
+			manaPotions : action.foundManaPotion === true ? state.manaPotions + 1 : state.manaPotions
+		});
+	}
+
 	case actionTypes.PLAYER_USE_HEALTH_POTION:{
 
 		return Object.assign({}, state, {

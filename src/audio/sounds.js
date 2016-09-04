@@ -32,6 +32,10 @@ sounds[audioTypes.SND_DRINK_POTION] = new Howl({
     src: [require('./../../sounds/potionDrinking.mp3')]
 });
 
+sounds[audioTypes.SND_DRINK_POTION] = new Howl({
+    src: [require('./../../sounds/ohh.mp3')]
+});
+
 export const play = (sound) =>{
 	if(sounds[sound]){
 		sounds[sound].play();

@@ -322,7 +322,8 @@ function placeSpecialMapObjects(dung){
 				if(checkDeadEndTile(q,i,dung)){
 					//chance of something spawning in dead end
 					if(getRandBool(50)){
-						if(getRandBool(75)){
+						//50% chance for altar
+						if(getRandBool(50)){
 							dung[i][q] = dungeonTypes.OBJ_ALTAR;
 							
 						}

@@ -54,7 +54,7 @@ when you hover attribute the normal hover text creates a mouse over box to displ
 stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
 remove bootstrap
 disable potions clicks if weapon inventory screen is open
-
+footsteps sound when going stairs
 
 stats
 strength*		melee dmg*	tiny life*

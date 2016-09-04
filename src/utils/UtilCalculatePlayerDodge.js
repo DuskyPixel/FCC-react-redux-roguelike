@@ -1,5 +1,3 @@
-import * as otherTypes from './../constants/otherTypes';
-
 export default function getPlayerDodge(player) {
 	let dodge = player.agility;
 

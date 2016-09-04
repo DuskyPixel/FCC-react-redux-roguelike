@@ -5,7 +5,7 @@ import * as otherTypes from './../constants/otherTypes';
 import * as sounds from '../audio/sounds';
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
-import getPlayerDamage from '../utils/UtilCalculatePlayerDamage';
+import {getRandPlayerDamage} from '../utils/UtilCalculatePlayerDamage';
 import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 
@@ -72,6 +72,7 @@ function gettouchAltarObject(posX, posY){
 
 	return touchAltarObject;
 }
+
 export const touchedAltar = (posX, posY) =>{
 	sounds.play(audioTypes.SND_ALTAR);
 	return gettouchAltarObject(posX, posY);
@@ -89,6 +90,41 @@ export const touchedGold = (posX, posY, playerLevel, dungeonFloor) =>{
 	};
 };
 
+//item
+export const touchedItem = (posX, posY, player) =>{
+	let foundHealthPotion = false;
+	let foundManaPotion = false;
+	let foundWeapon = false;
+
+	//66% chance for potion
+	if(getRandBool(66)){
+		sounds.play(audioTypes.SND_DRINK_POTION);
+
+		//50% chance for health potion
+		if(getRandBool(50)){
+			foundHealthPotion = true;
+		}
+		else{
+			foundManaPotion = true;
+		}
+
+	}
+	//item
+	else{
+
+		sounds.play(audioTypes.SND_OHH);
+		console.log("found weapon");
+		foundWeapon = true;
+	}
+
+	return {
+		type: actionTypes.PLAYER_TOUCHED_ITEM,
+		pos: {x: posX, y: posY},
+		foundHealthPotion : foundHealthPotion,
+		foundManaPotion : foundManaPotion,
+		foundWeapon : foundWeapon
+	};
+};
 
 //movement
 export const moveX = (moveDirection) =>{
@@ -129,7 +165,7 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
 
 	sounds.play(audioTypes.SND_ATTACK);
 
-	let damage = getPlayerDamage(player);
+	let damage = getRandPlayerDamage(player);
 
 	let newMonsterState = JSON.parse(JSON.stringify(monsters));
 	let killedPOS = -1;

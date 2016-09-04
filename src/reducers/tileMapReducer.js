@@ -33,23 +33,13 @@ export default function tileGrid (state = initialState.tileGrid, action) {
 			}
 
 		}
+		
+		// eslint-disable-next-line
+		case actionTypes.PLAYER_TOUCHED_ALTAR: {}
+		// eslint-disable-next-line
+		case actionTypes.PLAYER_TOUCHED_GOLD: {}
 
-		case actionTypes.PLAYER_TOUCHED_ALTAR: {
-
-			for(let i=0;i<state.length;i++){
-				let tempArr = [];
-				for(let z=0;z<state[0].length;z++){
-					tempArr.push(state[i][z]);
-				}
-				newState.push(tempArr);
-			}
-
-			newState[action.pos.y][action.pos.x] = dungeonTypes.GROUND;
-
-			return newState;
-		}
-
-		case actionTypes.PLAYER_TOUCHED_GOLD: {
+		case actionTypes.PLAYER_TOUCHED_ITEM: {
 
 			for(let i=0;i<state.length;i++){
 				let tempArr = [];
