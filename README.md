@@ -2,6 +2,8 @@
 
 This is a [react redux project for freecodecamp](https://www.freecodecamp.com/challenges/build-a-roguelike-dungeon-crawler-game) using a react redux starter kit/boiler plate called [React Slingshot](https://github.com/coryhouse/react-slingshot).
 
+![Roguelike Screenshot](http://image.prntscr.com/image/8b096729746549ec9c4b6cf2373e332d.png)
+
 <!---
 
 
