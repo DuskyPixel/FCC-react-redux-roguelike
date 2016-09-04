@@ -18,7 +18,7 @@ $tileSize: 128px;
 	box-sizing: border-box;
 	width: $tileSize;
 	height: $tileSize;
-
+	border: 2px solid black;
 }
 img{
 	width: 100%;

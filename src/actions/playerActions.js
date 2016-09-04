@@ -1,15 +1,20 @@
 import * as actionTypes from './../constants/actionTypes';
-import * as otherTypes from './../constants/otherTypes';
+
 import * as audioTypes from './../constants/audioTypes';
+import * as otherTypes from './../constants/otherTypes';
 import * as sounds from '../audio/sounds';
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
+import getPlayerDamage from '../utils/UtilCalculatePlayerDamage';
+import getPlayerLife from '../utils/UtilCalculatePlayerLife';
+import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 
 
-export const updateStats = () =>{
+export const updateStats = (player) =>{
 	return {
 		type: actionTypes.PLAYER_UPDATE_STATS,
-		payload: ""
+		life: getPlayerLife(player),
+		mana: getPlayerMana(player)
 	};
 };
 
@@ -124,9 +129,7 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
 
 	sounds.play(audioTypes.SND_ATTACK);
 
-	let damage = player.agility * otherTypes.AGI_DMG_INC;
-	damage += getRandInt(player.level * otherTypes.LVL_DMG_MIN_MULTI, player.level * otherTypes.LVL_DMG_MAX_MULTI);
-	damage += getRandInt(player.strength * otherTypes.STR_DMG_MIN_MULTI, player.strength * otherTypes.STR_DMG_MAX_MULTI);
+	let damage = getPlayerDamage(player);
 
 	let newMonsterState = JSON.parse(JSON.stringify(monsters));
 	let killedPOS = -1;

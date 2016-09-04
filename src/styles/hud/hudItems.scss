@@ -51,4 +51,19 @@ $potionFontColor : #70A0FF;
 			}
 		}
 	}
+
+	
+	#weaponContainer{
+		color: lightgrey;
+		margin-top: 5px;
+		border-radius: 5%;
+		text-align: left;
+		position: absolute;
+		font-size: 16px !important;
+		z-index: 1000;
+		width: auto;
+		height: auto;
+		background: #338;
+	}
+
 }

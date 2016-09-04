@@ -50,6 +50,9 @@ attribute component
 H - help me screen : shows what attributes do, floors till boss, etc
 when you hover attribute the normal hover text creates a mouse over box to display how that stat is currently affecting you 		and.. how +1 will affect you
 stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
+remove bootstrap
+disable potions clicks if weapon inventory screen is open
+
 
 stats
 strength*		melee dmg*	tiny life*
@@ -99,6 +102,20 @@ Battle Axe	14		50
 
 
 
+Spells
+
+1	next attack does 33% more damage
+2	heal 7% to 19%
+3	+15% dodge chance for 5 attacks
+
+
+
+
+
+
+
+Should I check if action can go through before action function call or in action creator?
+Should I calculate in action creators and only pass new values in reducers?
 
 
 

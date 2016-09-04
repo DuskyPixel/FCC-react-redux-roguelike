@@ -127,7 +127,7 @@ class PlayerContainer extends Component {
 
 		//upgrade object grid array
 
-		this.props.actions.updateStats();
+		this.props.actions.updateStats(this.props.player);
 	}
 
 

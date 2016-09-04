@@ -20,9 +20,10 @@ h3{
 	background: $bgColor;
 	height: 100px;
 	width: auto;
-	border: 2px solid #55b;
-	padding-left: 10px;
-	padding-right: 10px;
+	border: 4px solid #55b;
+	border-right: 2px solid #55b;
+	padding-left: 11px;
+	padding-right: 12px;
 	div .playerHudSprite{
 		margin: 0 auto;
 
@@ -32,6 +33,8 @@ h3{
 
 	h5{
 		color: maroon;
+		margin-top: 5px;
+		margin-bottom: 5px;
 	}
 
 	.goldHud{
@@ -105,8 +108,8 @@ h3{
 
 
 .barContainer{
-	margin-top: 4px;
-	margin-left: 3px;
+	margin-top: 2px;
+	margin-left: 10px;
 
 	border: 2px solid #415C6E;
 	

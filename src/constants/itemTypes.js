@@ -1,6 +1,6 @@
 
 //% to increase when potions are used
-export const POTION_PERCENT = .23;
+export const POTION_PERCENT = .29;
 
 export const ITEMS = [
 	{

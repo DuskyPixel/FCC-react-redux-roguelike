@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Weapons from '../components/Weapons';
 
 const HudItems = ({player, clickHealthPotion, clickManaPotion}) => {
 
@@ -6,6 +7,7 @@ const HudItems = ({player, clickHealthPotion, clickManaPotion}) => {
         <div id="itemHudContainer">
             <div className="itemButton floater">
                 Items
+                <Weapons player={player} />
             </div>
 
             <div className="potions">

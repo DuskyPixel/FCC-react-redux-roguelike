@@ -143,8 +143,8 @@ switch(action.type)
 	case actionTypes.PLAYER_UPDATE_STATS: {
 
 		return Object.assign({},state, {
-			maxLife: (state.vitality * otherTypes.LIFE_VIT_MULTI) + state.level * otherTypes.LIFE_LVL_MULTI + otherTypes.BASE_LIFE + state.strength * otherTypes.LIFE_STR_MULTI,
-			maxMana: (state.intelligence * otherTypes.MANA_INT_MULTI) + state.level * otherTypes.MANA_LVL_MULTI,
+			maxLife: action.life,
+			maxMana: action.mana
 		});
 	}
 

@@ -30,20 +30,24 @@ export default{
 		expNeededToLevel: 25, //the amount of exp needed for next level
 
 		maxLife: 27,
-		maxMana: 14,
+		maxMana: 17,
 		life: 27,
-		mana: 14,
+		mana: 17,
 
 		healthPotions : 1,
 		manaPotions : 0,
 		
-		weapon : {
-			name: "Dagger",
-			damage : 2,
-			dodge : 0,
-			hp : 0,
-			mp : 3
-		},
+		weapons : [
+			{
+				name: "Dagger",
+				damage : 2,
+				dodge : 0,
+				life : 0,
+				mana : 3,
+				equipped: true
+			}
+		],
+
 		killedMonster : false, //for regen after killing mob
 
 		strength: 3,
