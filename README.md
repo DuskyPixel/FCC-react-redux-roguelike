@@ -88,14 +88,19 @@ intelligence  	max mana	mp regen after battle*
 
 			DMG	DOG	HP	MP
 Dagger		2			3
+
 Knife		3	10		
 Club		5		5	
+
 Axe			5		10	
 Sceptre		6			15
+
 Glaive		8	14		
 Spiked Club	10		20	
+
 Longsword	11		30	
 Staff		9			40
+
 Katana		12	18		
 Battle Axe	14		50	
 

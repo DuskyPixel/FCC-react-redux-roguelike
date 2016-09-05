@@ -38,7 +38,7 @@ export default function tileGrid (state = initialState.tileGrid, action) {
 		case actionTypes.PLAYER_TOUCHED_ALTAR: {}
 		// eslint-disable-next-line
 		case actionTypes.PLAYER_TOUCHED_GOLD: {}
-
+		// eslint-disable-next-line
 		case actionTypes.PLAYER_TOUCHED_ITEM: {
 
 			for(let i=0;i<state.length;i++){

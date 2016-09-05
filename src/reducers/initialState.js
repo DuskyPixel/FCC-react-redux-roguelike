@@ -45,14 +45,6 @@ export default{
 				life : 0,
 				mana : 3,
 				equipped: true
-			},
-			{
-				name: "Knife",
-				damage : 2,
-				dodge : 0,
-				life : 0,
-				mana : 3,
-				equipped: false
 			}
 		],
 

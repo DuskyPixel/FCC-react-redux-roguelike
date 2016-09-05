@@ -2,6 +2,7 @@ import * as actionTypes from './../constants/actionTypes';
 
 import * as audioTypes from './../constants/audioTypes';
 import * as otherTypes from './../constants/otherTypes';
+import * as itemTypes from './../constants/itemTypes';
 import * as sounds from '../audio/sounds';
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
@@ -95,9 +96,10 @@ export const touchedItem = (posX, posY, player) =>{
 	let foundHealthPotion = false;
 	let foundManaPotion = false;
 	let foundWeapon = false;
+	let weaponStats = [];
 
 	//66% chance for potion
-	if(getRandBool(66)){
+	if(getRandBool(0)){
 		sounds.play(audioTypes.SND_DRINK_POTION);
 
 		//50% chance for health potion
@@ -113,16 +115,39 @@ export const touchedItem = (posX, posY, player) =>{
 	else{
 
 		sounds.play(audioTypes.SND_OHH);
-		console.log("found weapon");
 		foundWeapon = true;
+
+		let weapons = itemTypes.WEAPONS;
+		let counter = 0;
+
+		for(let i in weapons){
+			//weapons drop equal to floor or - 1, 33.4 chance for each to drop
+			if(weapons[i].minFloor === player.dungeonFloor || weapons[i].minFloor === player.dungeonFloor - 1){
+		
+				if(getRandBool(33.4 + counter * 33.4)){
+
+					weaponStats = weapons[i];
+					weaponStats["equipped"] = false;
+
+					break;
+				}
+				else{
+					counter += 1;
+				}
+			
+			}
+		}
 	}
+
 
 	return {
 		type: actionTypes.PLAYER_TOUCHED_ITEM,
 		pos: {x: posX, y: posY},
 		foundHealthPotion : foundHealthPotion,
 		foundManaPotion : foundManaPotion,
-		foundWeapon : foundWeapon
+		foundWeapon : foundWeapon,
+		weaponStats : weaponStats
+
 	};
 };
 

@@ -12,6 +12,12 @@ const Weapons = ({player}) => {
 	const life = getPlayerLife(player);
 	const mana = getPlayerMana(player);
 
+	let OneWeaponGroup = [];
+
+	for(let i in player.weapons){
+		OneWeaponGroup.push(<OneWeapon key={i} weapon={player.weapons[i]} />);
+	}
+
 	return (
 		<div id="weaponContainer">
 			<div className="flexor">
@@ -30,8 +36,8 @@ const Weapons = ({player}) => {
 				<span className="other">Sell</span>
 			</div>
 
-			<OneWeapon weapon={player.weapons[0]} />
-			<OneWeapon weapon={player.weapons[1]} />
+			{OneWeaponGroup}
+
 		</div>
 	);
 };

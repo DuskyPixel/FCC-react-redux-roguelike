@@ -8,11 +8,15 @@ switch(action.type)
 {
 
 	case actionTypes.PLAYER_TOUCHED_ITEM:{
-		console.log(state.gold);
-		return Object.assign({}, state, {
+
+		let newState = Object.assign({}, state, {
 			healthPotions : action.foundHealthPotion === true ? state.healthPotions + 1 : state.healthPotions,
 			manaPotions : action.foundManaPotion === true ? state.manaPotions + 1 : state.manaPotions
 		});
+
+		newState.weapons.push(action.weaponStats);
+		
+		return newState;
 	}
 
 	case actionTypes.PLAYER_USE_HEALTH_POTION:{
