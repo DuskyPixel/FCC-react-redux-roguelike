@@ -99,7 +99,7 @@ export const touchedItem = (posX, posY, player) =>{
 	let weaponStats = [];
 
 	//66% chance for potion
-	if(getRandBool(0)){
+	if(getRandBool(66)){
 		sounds.play(audioTypes.SND_DRINK_POTION);
 
 		//50% chance for health potion
