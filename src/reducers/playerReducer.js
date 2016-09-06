@@ -9,14 +9,25 @@ switch(action.type)
 
 	case actionTypes.PLAYER_TOUCHED_ITEM:{
 
-		let newState = Object.assign({}, state, {
+		return Object.assign({}, state, {
 			healthPotions : action.foundHealthPotion === true ? state.healthPotions + 1 : state.healthPotions,
-			manaPotions : action.foundManaPotion === true ? state.manaPotions + 1 : state.manaPotions
+			manaPotions : action.foundManaPotion === true ? state.manaPotions + 1 : state.manaPotions,
+			weapons : action.foundWeapon === true ? action.newWeaponState : state.weapons
 		});
+	}
 
-		newState.weapons.push(action.weaponStats);
+	case actionTypes.WEAPON_EQUIP:{
+		return Object.assign({}, state, {
+			weapons : action.newWeaponState
+		});
+	}
+
+	case actionTypes.WEAPON_SELL:{
 		
-		return newState;
+		return Object.assign({}, state, {
+			weapons : action.newWeaponState,
+			gold : state.gold + action.sellValue
+		});
 	}
 
 	case actionTypes.PLAYER_USE_HEALTH_POTION:{
@@ -156,7 +167,9 @@ switch(action.type)
 
 		return Object.assign({},state, {
 			maxLife: action.life,
-			maxMana: action.mana
+			maxMana: action.mana,
+			mana : state.mana > action.mana ? action.mana : state.mana,
+			life : state.life > action.life ? action.life : state.life
 		});
 	}
 

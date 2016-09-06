@@ -5,7 +5,7 @@ import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 import OneWeapon from '../components/OneWeapon';
 
-const Weapons = ({player}) => {
+const Weapons = ({player, clickEquip, clickSell}) => {
 
 	const damage = getPlayerDamage(player);
 	const dodge = getPlayerDodge(player);
@@ -15,7 +15,7 @@ const Weapons = ({player}) => {
 	let OneWeaponGroup = [];
 
 	for(let i in player.weapons){
-		OneWeaponGroup.push(<OneWeapon key={i} weapon={player.weapons[i]} />);
+		OneWeaponGroup.push(<OneWeapon clickEquip={clickEquip} clickSell={clickSell} key={i} id={i} weapon={player.weapons[i]} />);
 	}
 
 	return (
@@ -43,7 +43,9 @@ const Weapons = ({player}) => {
 };
 
 Weapons.propTypes = {
-	player: PropTypes.object.isRequired
+	player: PropTypes.object.isRequired,
+	clickEquip: PropTypes.func.isRequired,
+	clickSell: PropTypes.func.isRequired
 };
 
 export default Weapons;

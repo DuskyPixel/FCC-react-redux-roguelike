@@ -37,6 +37,7 @@ class PlayerContainer extends Component {
 											nextProps.player.pos.y); 
 		}
 		else if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_ITEM){
+			
 			this.props.actions.touchedItem(nextProps.player.pos.x, 
 											nextProps.player.pos.y, 
 											nextProps.player);

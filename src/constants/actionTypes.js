@@ -1,6 +1,8 @@
 export const PLAYERLEVELUP = 'PLAYERLEVELUP';
 
 
+export const WEAPON_EQUIP = 'WEAPON_EQUIP';
+export const WEAPON_SELL = 'WEAPON_SELL';
 
 
 export const CHANGE_HUD_HOVER_MESSAGE = 'CHANGE_HUD_HOVER_MESSAGE';

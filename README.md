@@ -24,20 +24,13 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 TODO
 ==-=-=-
 
-weapon component
-User Story: I have a weapon. I can pick up a better weapon. 
+unequip, equip, sell, stats adjusting
+boss win screen
+death check in componentWillUpdate + death sound
 
 
-
-User Story: I can pick up health items.
-
-User Story: All the items are arranged at random.
-
-User Story: I do damage based off of my level and my weapon. 
 
 User Story: When I find and beat the boss, I win.
-
-death in componentWillUpdate
 
 
 
@@ -55,6 +48,8 @@ stat upgrade prices are not dependent on the current stat level but the number o
 remove bootstrap
 disable potions clicks if weapon inventory screen is open
 footsteps sound when going stairs
+remove the updatestats per step
+should not need to take a step to update stats after equipping/unequipping
 
 stats
 strength*		melee dmg*	tiny life*

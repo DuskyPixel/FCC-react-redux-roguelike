@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Weapons = ({weapon}) => {
+const Weapons = ({weapon, id, clickEquip, clickSell}) => {
 
 	let classString = "weapon";
 	let equipString = "Equip";
@@ -16,14 +16,17 @@ const Weapons = ({weapon}) => {
 			<span className="stat">{weapon.dodge}</span>
 			<span className="stat">{weapon.life}</span>
 			<span className="stat">{weapon.mana}</span>
-			<span className="other">{equipString}</span>
-			<span className="other">Sell</span>
+			<span className="other" onClick={()=>clickEquip(id)} >{equipString}</span>
+			<span className="other" onClick={()=>clickSell(id)} >Sell</span>
 		</div>
 	);
 };
 
 Weapons.propTypes = {
-	weapon: PropTypes.object.isRequired
+	weapon: PropTypes.object.isRequired,
+	clickEquip: PropTypes.func.isRequired,
+	clickSell: PropTypes.func.isRequired,
+	id: PropTypes.number.isRequired
 };
 
 export default Weapons;

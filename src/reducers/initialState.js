@@ -44,6 +44,7 @@ export default{
 				dodge : 0,
 				life : 0,
 				mana : 3,
+				minFloor : 0,
 				equipped: true
 			}
 		],

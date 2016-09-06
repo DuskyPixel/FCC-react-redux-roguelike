@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import HudLeft from '../components/HudLeft';
-import HudItems from '../components/HudItems';
+import HudItemContainer from '../containers/HudItemContainer';
 import HudAttributes from '../components/HudAttributes';
 import HudRight from '../components/HudRight';
 
@@ -82,20 +82,14 @@ const Hud = (props) => {
 		props.actions.buyAttributeUpgrade(attrString, goldCost);
 	}
 
-	function clickHealthPotion(){
-		props.actions.useHealthPotion(props.player);
-	}
 	
-	function clickManaPotion(){
-		props.actions.useManaPotion(props.player);
-	}
 
 
 	return (
 		<div id="hudContainer">
 
 			<HudLeft player={props.player} />
-			<HudItems player={props.player} clickHealthPotion={clickHealthPotion} clickManaPotion={clickManaPotion} />
+			<HudItemContainer />
 			<HudAttributes player={props.player} buyAttribute={buyAttributeUpgrade} hud={props.hud} hoverMsgCreation={hoverMsgCreation} hoverMsgDeletion={hoverMsgDeletion}/>
 			<HudRight monster={monster} />
 

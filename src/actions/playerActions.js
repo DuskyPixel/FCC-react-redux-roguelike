@@ -1,9 +1,10 @@
 import * as actionTypes from './../constants/actionTypes';
 
+import * as sounds from '../audio/sounds';
 import * as audioTypes from './../constants/audioTypes';
 import * as otherTypes from './../constants/otherTypes';
 import * as itemTypes from './../constants/itemTypes';
-import * as sounds from '../audio/sounds';
+
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
 import {getRandPlayerDamage} from '../utils/UtilCalculatePlayerDamage';
@@ -96,7 +97,7 @@ export const touchedItem = (posX, posY, player) =>{
 	let foundHealthPotion = false;
 	let foundManaPotion = false;
 	let foundWeapon = false;
-	let weaponStats = [];
+	let weaponArray = [];
 
 	//66% chance for potion
 	if(getRandBool(66)){
@@ -119,6 +120,7 @@ export const touchedItem = (posX, posY, player) =>{
 
 		let weapons = itemTypes.WEAPONS;
 		let counter = 0;
+		let weaponStats = [];
 
 		for(let i in weapons){
 			//weapons drop equal to floor or - 1, 33.4 chance for each to drop
@@ -137,6 +139,12 @@ export const touchedItem = (posX, posY, player) =>{
 			
 			}
 		}
+
+		for(let i=0;i<player.weapons.length;i++){
+			weaponArray.push(player.weapons[i]);
+		}
+
+		weaponArray.push(weaponStats);
 	}
 
 
@@ -146,7 +154,7 @@ export const touchedItem = (posX, posY, player) =>{
 		foundHealthPotion : foundHealthPotion,
 		foundManaPotion : foundManaPotion,
 		foundWeapon : foundWeapon,
-		weaponStats : weaponStats
+		newWeaponState : weaponArray
 
 	};
 };

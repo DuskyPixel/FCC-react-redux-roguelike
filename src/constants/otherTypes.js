@@ -30,3 +30,7 @@ export const GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER = 6;
 
 //size of tiles on screen
 export const TILE_SIZE = 128;
+
+//sell value
+export const SELL_FLOOR_VALUE_MIN = 5;
+export const SELL_FLOOR_VALUE_MAX = 8;
