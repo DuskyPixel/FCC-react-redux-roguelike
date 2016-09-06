@@ -12,6 +12,17 @@ import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 
 
+export const playerDied = () =>{
+	
+	sounds.play(audioTypes.SND_GAME_OVER);
+	//game over screen using same screen as win screen
+
+	return {
+		type: actionTypes.PLAYER_DIED,
+		gameWon: false
+	};
+};
+
 export const updateStats = (player) =>{
 	return {
 		type: actionTypes.PLAYER_UPDATE_STATS,

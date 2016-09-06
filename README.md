@@ -9,34 +9,17 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 TODO
 ==-=-=-
-
-unequip, equip, sell, stats adjusting
-boss win screen
-death check in componentWillUpdate + death sound
+improve altar/item spawning
 
 
 
-User Story: When I find and beat the boss, I win.
 
 
 
 low priority
 -=-=-=-=-==-
-improve altar/item spawning
 constants - they do not have to be from another file
 each component/container has its own scss file
 add mobs to preloader and items
@@ -50,6 +33,10 @@ disable potions clicks if weapon inventory screen is open
 footsteps sound when going stairs
 remove the updatestats per step
 should not need to take a step to update stats after equipping/unequipping
+User Story: When I find and beat the boss, I win.
+
+
+
 
 stats
 strength*		melee dmg*	tiny life*

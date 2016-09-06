@@ -1,4 +1,5 @@
 export const PLAYERLEVELUP = 'PLAYERLEVELUP';
+export const PLAYER_DIED = 'PLAYER_DIED';
 
 
 export const WEAPON_EQUIP = 'WEAPON_EQUIP';

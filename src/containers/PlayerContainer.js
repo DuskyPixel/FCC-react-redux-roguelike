@@ -25,7 +25,13 @@ class PlayerContainer extends Component {
 
 	componentWillUpdate(nextProps) {
 
+		if(nextProps.player.life <= 0){
+			this.props.actions.playerDied();
+			return;
+		}
+
 		const PLAYER_POS_TILE_ID = nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x];
+
 		if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_GOLD){
 			this.props.actions.touchedGold(nextProps.player.pos.x, 
 											nextProps.player.pos.y, 
@@ -66,6 +72,10 @@ class PlayerContainer extends Component {
 	movePlayer(e){
 		e.preventDefault();
 		e.stopPropagation();
+
+		if(this.props.player.life <= 0){
+			return;
+		}
 
 		let key = e.keyCode ? e.keyCode : e.which;
 

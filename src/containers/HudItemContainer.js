@@ -33,7 +33,6 @@ const HudItemContainer = (props) => {
                 <div className="itemButton">
                     Items
                 </div>
-                <Weapons player={props.player} clickEquip={clickEquip} clickSell={clickSell} />
             </div>
 
             <div className="potions">
