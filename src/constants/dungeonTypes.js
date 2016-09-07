@@ -86,9 +86,6 @@ export const STR_STAIRS = "stairs";
 export const STR_EMPTY = "empty";
 
 export const STR_PLAYER = "player";
-export const STR_PLAYER_ASSASSIN = "playerAssassin";
-export const STR_PLAYER_MAGE = "playerMage";
-export const STR_PLAYER_WARRIOR = "playerWarrior";
 
 //export const STR_MOB_RAT = "rat";
 export const STR_ALTAR = "altar";

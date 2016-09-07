@@ -11,8 +11,7 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-constants - they do not have to be from another file
-each component/container has its own scss file
+
 add mobs to preloader and items
 credit sounds
 attribute component
@@ -26,6 +25,22 @@ remove the updatestats per step
 should not need to take a step to update stats after equipping/unequipping
 User Story: When I find and beat the boss, I win.
 might be altering state in action creators
+
+
+
+
+
+
+refactoring
+..............
+constants - do not have to be from another file
+each component/container has its own scss file
+
+
+
+
+
+
 
 
 

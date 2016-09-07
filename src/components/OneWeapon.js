@@ -9,9 +9,15 @@ const Weapons = ({weapon, id, clickEquip, clickSell}) => {
 		equipString = "Unequip";
 	}
 
+	let newWeaponName = weapon.name;
+
+	newWeaponName = newWeaponName.substr(0, newWeaponName.indexOf('_')) + ' ' + newWeaponName.substr(newWeaponName.indexOf('_') + 1);
+
+
+
 	return (
 		<div className={classString}>
-			<span className="weaponName">{weapon.name} <img src={require('../../images/items/'+weapon.name+'.png')} /> </span>
+			<span className="weaponName">{newWeaponName} <img src={require('../../images/items/'+weapon.name+'.png')} /> </span>
 			<span className="stat">{weapon.damage}</span>
 			<span className="stat">{weapon.dodge}</span>
 			<span className="stat">{weapon.life}</span>
@@ -26,7 +32,7 @@ Weapons.propTypes = {
 	weapon: PropTypes.object.isRequired,
 	clickEquip: PropTypes.func.isRequired,
 	clickSell: PropTypes.func.isRequired,
-	id: PropTypes.number.isRequired
+	id: PropTypes.string.isRequired
 };
 
 export default Weapons;
