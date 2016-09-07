@@ -266,11 +266,10 @@ function chopCenterLeftAndRight(arr){
 }
 
 function placeSpecialMapObjects(dung){
-	//nothing can above or below doors
-	//player spawns at dead end
+	//nothing can spawn above or below doors
+	//player spawns at a dead end
 	//monsters can not spawn in dead ends
-	//altars randomly placed
-	//equip spawn have higher chance of spawning at dead ends
+	//altars and items can only spawn at dead ends
 	//gold can spawn anywhere that does not already have something there so it spawns last
 
 
@@ -322,8 +321,8 @@ function placeSpecialMapObjects(dung){
 				if(checkDeadEndTile(q,i,dung)){
 					//chance of something spawning in dead end
 					if(getRandBool(50)){ //50%
-						//50% chance for altar
-						if(getRandBool(50)){ //50%
+						//30% chance for altar
+						if(getRandBool(30)){
 							dung[i][q] = dungeonTypes.OBJ_ALTAR;
 							
 						}
@@ -352,28 +351,12 @@ function placeSpecialMapObjects(dung){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 	let monsterArray = [];
-	const MIN_TIER_TWO_SPAWN = 1;
 	const MAX_TIER_TWO_SPAWN = 2;
 	const tierOneMax = getRandInt(9 + dungeonFloor, 11 + dungeonFloor);
-	const tierTwoMax = getRandInt(MIN_TIER_TWO_SPAWN, MAX_TIER_TWO_SPAWN + dungeonFloor);
+	const tierTwoMax = getRandInt(dungeonFloor, MAX_TIER_TWO_SPAWN + dungeonFloor);
 	let tierOneCount = 0;
 	let tierTwoCount = 0;
 
@@ -474,14 +457,6 @@ function createMonsterArray(dungeonArray, dungeonFloor, totalFloorTiles){
 
 	return [monsterArray, dungeonArray];
 }
-
-
-
-
-
-
-
-
 
 
 function placeRandomGroundTiles(dung){
