@@ -5,7 +5,9 @@ $potionFontColor : #70A0FF;
 	background: $bgColor;
 	height: 100px;
 	width: auto;
-	border: 2px solid #55b;
+	border: 4px solid $borderColor;
+	border-left: 2px solid $borderColor;
+	border-right: 2px solid $borderColor;
 	padding-left: 10px;
 	padding-right: 10px;
 

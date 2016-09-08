@@ -1,4 +1,5 @@
 import * as otherTypes from './../constants/otherTypes';
+import * as spellTypes from './../constants/spellTypes';
 import getRandInt from '../utils/UtilRandInteger';
 
 export function getPlayerDamage(player) {
@@ -16,6 +17,10 @@ export function getPlayerDamage(player) {
 
 			}
 		}
+	}
+
+	if(player.attackBuff){
+		damage = Math.ceil( damage * 1 + spellTypes.ATTACK_BUFF_INCREASE );
 	}
 
 	return damage;

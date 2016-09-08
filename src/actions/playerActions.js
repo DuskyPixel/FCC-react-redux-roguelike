@@ -4,6 +4,7 @@ import * as sounds from '../audio/sounds';
 import * as audioTypes from './../constants/audioTypes';
 import * as otherTypes from './../constants/otherTypes';
 import * as itemTypes from './../constants/itemTypes';
+import * as spellTypes from './../constants/spellTypes';
 
 import getRandInt from '../utils/UtilRandInteger';
 import getRandBool from '../utils/UtilRandBool';
@@ -11,6 +12,11 @@ import {getRandPlayerDamage} from '../utils/UtilCalculatePlayerDamage';
 import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 
+export const reduceBuff = () =>{
+	return {
+		type: actionTypes.PLAYER_REDUCE_BUFF
+	};
+};
 
 export const playerDied = () =>{
 	
@@ -249,10 +255,14 @@ export const playerAttack = (player, monsterPositionX, monsters) =>{
 		mobGold = getRandInt(player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MIN_MULTIPLIER, player.dungeonFloor * otherTypes.GOLD_DUNGEON_FLOOR_MAX_MULTIPLIER);
 
 	}
-	//dodge monster attack
+	//dodge monster with buff
+	else if(player.dodgeBuff > 0 && getRandBool(player.agility + spellTypes.DODGE_BUFF_INCREASE)){
+		monsterDamage = 0;
+	}
+	//dodge monster attack without buff
 	else if(getRandBool(player.agility)){
 
-		monsterDamage=0;
+		monsterDamage = 0;
 	}
 
 

@@ -11,17 +11,15 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
-remove bootstrap
-disable potions clicks if weapon inventory screen is open
-footsteps sound when going stairs
-remove the updatestats per step
-should not need to take a step to update stats after equipping/unequipping
+add magic system
+remove the updatestats per step, should not need to take a step to update stats after equipping/unequipping
 User Story: When I find and beat the boss, I win.
 might be altering state in action creators
 credit sounds
-map loops and attribute component
-H - help me screen : shows what attributes do, floors till boss, etc
+use map for loops and create more components like for attribute
+remove bootstrap
+
+
 
 
 
@@ -42,7 +40,7 @@ stats
 strength*		melee dmg*	tiny life*
 agility	    	tiny damage*	dodge chance*
 vitality		max life*	hp regen after battle*
-intelligence  	max mana	mp regen after battle*
+intelligence  	max mana	mp regen after battle, every 4 int increase heal percent by 1
 
 
 
@@ -93,8 +91,8 @@ Battle Axe	14		50
 
 Spells
 
-1	next attack does 33% more damage
-2	heal 7% to 19%
+1	next attack does 25% more damage
+2	heal 7% to 13%
 3	+15% dodge chance for 5 attacks
 
 

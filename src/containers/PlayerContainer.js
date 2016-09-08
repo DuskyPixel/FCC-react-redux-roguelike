@@ -30,6 +30,10 @@ class PlayerContainer extends Component {
 			return;
 		}
 
+		if(nextProps.attackBuff || nextProps.dodgeBuff > 0){
+			this.props.actions.reduceBuff();
+		}
+
 		const PLAYER_POS_TILE_ID = nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x];
 
 		if(PLAYER_POS_TILE_ID === dungeonTypes.OBJ_GOLD){

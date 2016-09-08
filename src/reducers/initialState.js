@@ -59,7 +59,11 @@ export default{
 		strength: 3,
 		agility: 3,
 		vitality: 3,
-		intelligence: 3
+		intelligence: 3,
+
+		attackBuff: false,
+		dodgeBuff: false,
+		dodgeDuration: 0
 	},
 	monsters: [
 		{

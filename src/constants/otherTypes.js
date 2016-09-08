@@ -34,3 +34,4 @@ export const TILE_SIZE = 128;
 //sell value
 export const SELL_FLOOR_VALUE_MIN = 5;
 export const SELL_FLOOR_VALUE_MAX = 8;
+

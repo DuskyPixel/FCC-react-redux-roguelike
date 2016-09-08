@@ -8,6 +8,7 @@ import HudItemContainer from '../containers/HudItemContainer';
 import HudAttributes from '../components/HudAttributes';
 import HudRight from '../components/HudRight';
 
+
 import * as hudActions from '../actions/hudActions';
 
 import {MOBID_RAT, MOBID_TERRGOTH} from './../constants/dungeonTypes';
@@ -99,7 +100,7 @@ const Hud = (props) => {
 			<HudItemContainer />
 			<HudAttributes player={props.player} buyAttribute={buyAttributeUpgrade} hud={props.hud} hoverMsgCreation={hoverMsgCreation} hoverMsgDeletion={hoverMsgDeletion}/>
 			<HudRight monster={monster} />
-
+			
 		</div>
 
 	);

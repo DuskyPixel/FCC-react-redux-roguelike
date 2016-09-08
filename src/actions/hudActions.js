@@ -2,10 +2,64 @@ import * as sounds from '../audio/sounds';
 import * as hudTypes from './../constants/hudTypes';
 import * as otherTypes from './../constants/otherTypes';
 import * as actionTypes from './../constants/actionTypes';
+import * as spellTypes from './../constants/spellTypes';
 import * as itemTypes from './../constants/itemTypes';
+
 import {SND_COIN, SND_DRINK_POTION} from './../constants/audioTypes';
 
+import getRandInt from '../utils/UtilRandInteger';
+
 import getStatGoldCost from '../utils/UtilCalculateStatUpgradeCost';
+
+export const castSpell = (player, spell, manaCost) =>{
+
+
+	let healBuff = false;
+	let healAmount = 0;
+	let healPercent = 0;
+
+	let	attackBuff = false;
+
+	let	dodgeBuff = false;
+	let dodgeDuration = 0;
+
+	switch(spell){
+		case spellTypes.SPELL_ATTACK:{
+			attackBuff = true;
+
+		}break;
+
+		case spellTypes.SPELL_HEAL:{
+			healBuff = true;
+			healPercent = getRandInt(spellTypes.HEAL_BUFF_BASE_INCREASE_MIN, spellTypes.HEAL_BUFF_BASE_INCREASE_MAX);
+			healPercent += player.intelligence * spellTypes.HEAL_BUFF_INTELLIGENCE_INCREASE;
+
+		}break;
+
+		case spellTypes.SPELL_DODGE:{
+			dodgeBuff = true;
+			dodgeDuration = spellTypes.DODGE_BUFF_DURATION;
+
+		}break;
+	}
+
+	healAmount = Math.ceil(player.maxLife * healPercent / 100) ;
+	let newLife = player.life + healAmount;
+	if(newLife > player.maxLife){
+		newLife = player.maxLife;
+	}
+
+	return {
+		type: actionTypes.PLAYER_CAST_SPELL,
+		healBuff: healBuff,
+		newLife: newLife,
+		attackBuff: attackBuff,
+		dodgeBuff: dodgeBuff,
+		dodgeDuration: dodgeDuration,
+		manaCost: manaCost
+			
+	};
+};
 
 export const toggleInventory = () =>{
 

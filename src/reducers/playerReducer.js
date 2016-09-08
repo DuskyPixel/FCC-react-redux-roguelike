@@ -7,6 +7,25 @@ export default function player (state = initialState.player, action) {
 switch(action.type) 
 {
 
+	case actionTypes.PLAYER_REDUCE_BUFF:{
+
+		return Object.assign({}, state, {
+			attackBuff : false,
+			dodgeBuff : state.dodgeDuration - 1 > 0 ? true : false,
+			dodgeDuration : state.dodgeDuration > 0 ? state.dodgeDuration - 1 : 0
+		});
+	}
+
+	case actionTypes.PLAYER_CAST_SPELL:{
+
+		return Object.assign({}, state, {
+			life : action.healBuff === true ? action.newLife : state.life,
+			attackBuff: action.attackBuff === true ? action.attackBuff : false,
+			dodgeBuff: action.dodgeBuff === true ? action.dodgeBuff : false,
+			mana: state.mana - action.manaCost
+		});
+	}
+
 	case actionTypes.PLAYER_TOUCHED_ITEM:{
 
 		return Object.assign({}, state, {

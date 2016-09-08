@@ -1,0 +1,22 @@
+#spellContainer{
+	border: 4px solid $borderColor;
+	position: absolute;
+	top: 105px;
+	background: $bgColor;
+	color: white;
+
+	img{
+		width: 32px;
+		height: 32px;
+		opacity: .3;
+		padding-right: 5px;
+	}
+
+	img:hover{
+		opacity: .6;
+	}
+
+	.spellOn{
+		opacity: 1 !important;
+	}
+}

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import BigBar from './BigBar';
 
+import HudSpellContainer from '../containers/HudSpellContainer';
 
 const HudLeft = ({player}) => {
 
@@ -27,7 +28,7 @@ const HudLeft = ({player}) => {
                 <BigBar current={player.mana} max={player.maxMana} barName={"mana"}/>
                 <BigBar current={player.exp} max={player.expNeededToLevel} barName={"exp"}/>
             </div>
-
+            <HudSpellContainer />
 
 
         </div>
