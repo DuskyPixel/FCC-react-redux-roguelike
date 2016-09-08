@@ -5,6 +5,16 @@ import * as actionTypes from './../constants/actionTypes';
 import * as itemTypes from './../constants/itemTypes';
 import {SND_COIN, SND_DRINK_POTION} from './../constants/audioTypes';
 
+import getStatGoldCost from '../utils/UtilCalculateStatUpgradeCost';
+
+export const toggleInventory = () =>{
+
+	return {
+		type: actionTypes.TOGGLE_INVENTORY
+			
+	};
+};
+
 export const useHealthPotion = (player) =>{
 
 	let usedPotion = false;
@@ -70,9 +80,12 @@ export const revertHudHoverMsg = () =>{
 	};
 };
 
-export const buyAttributeUpgrade = (attributeString, goldCost) =>{
+export const buyAttributeUpgrade = (statString, statLevel, statUpgradeLevel) =>{
 
 	sounds.play(SND_COIN);
+
+	let goldCost = getStatGoldCost(statLevel, statUpgradeLevel);
+
 
 	let upgrade = {
 		strength: 0,
@@ -83,14 +96,14 @@ export const buyAttributeUpgrade = (attributeString, goldCost) =>{
 		life: 0,
 		mana: 0,
 		goldCost: goldCost,
+		
 		hoverMsg: ""
 	};
 	
 
-	switch(attributeString){
+	switch(statString){
 		case hudTypes.ATTR_STR:{
 			upgrade.strength = 1;
-			
 			break;
 		}
 		case hudTypes.ATTR_AGI:{
@@ -110,8 +123,9 @@ export const buyAttributeUpgrade = (attributeString, goldCost) =>{
 	upgrade.life = upgrade.vitality * otherTypes.LIFE_VIT_MULTI + upgrade.strength * otherTypes.LIFE_STR_MULTI;
 	upgrade.mana = upgrade.intelligence * otherTypes.MANA_INT_MULTI;
 
-	let updatedGoldCost = Math.floor((goldCost / hudTypes.ATTRIBUTE_UPGRADE_COST) + 1) * 2;
-	upgrade.hoverMsg = `Upgrade ${attributeString} by 1 for ${updatedGoldCost} gold`;
+	let newGoldCost = getStatGoldCost(statLevel + 1, statUpgradeLevel + 1);
+
+	upgrade.hoverMsg = `Upgrade ${statString} by 1 for ${newGoldCost} gold`;
 
 	return {
 		type: actionTypes.HUD_BUY_ATTRIBUTE_UPGRADE,

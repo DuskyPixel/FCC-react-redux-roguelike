@@ -11,12 +11,6 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-
-add mobs to preloader and items
-credit sounds
-attribute component
-H - help me screen : shows what attributes do, floors till boss, etc
-when you hover attribute the normal hover text creates a mouse over box to display how that stat is currently affecting you 		and.. how +1 will affect you
 stat upgrade prices are not dependent on the current stat level but the number of times it has been upgraded
 remove bootstrap
 disable potions clicks if weapon inventory screen is open
@@ -25,9 +19,9 @@ remove the updatestats per step
 should not need to take a step to update stats after equipping/unequipping
 User Story: When I find and beat the boss, I win.
 might be altering state in action creators
-
-
-
+credit sounds
+map loops and attribute component
+H - help me screen : shows what attributes do, floors till boss, etc
 
 
 

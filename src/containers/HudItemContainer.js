@@ -27,13 +27,18 @@ const HudItemContainer = (props) => {
         props.actions.sellWeapon(props.player.weapons, id);
     }
 
+    function toggleInventory(){
+        props.actions.toggleInventory();
+    }
+
     return (
         <div id="itemHudContainer">
             <div className="floater">
-                <div className="itemButton">
+                <div className="itemButton" onClick={toggleInventory}>
                     Items
                 </div>
-                <Weapons player={props.player} clickEquip={clickEquip} clickSell={clickSell} />
+                {props.hud.displayInventory ? <Weapons player={props.player} clickEquip={clickEquip} clickSell={clickSell} /> : null}
+                
             </div>
 
             <div className="potions">
@@ -51,13 +56,15 @@ const HudItemContainer = (props) => {
 
 HudItemContainer.propTypes = {
     player: PropTypes.object.isRequired,
+    hud: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
 
 };
 
 function mapStateToProps(state) {
     return {
-        player: state.player
+        player: state.player,
+        hud: state.hud
     };
 }
 

@@ -13,7 +13,7 @@ import * as hudActions from '../actions/hudActions';
 import {MOBID_RAT, MOBID_TERRGOTH} from './../constants/dungeonTypes';
 import * as hudTypes from './../constants/hudTypes';
 
-
+import getStatGoldCost from '../utils/UtilCalculateStatUpgradeCost';
 
 const Hud = (props) => {
 
@@ -44,42 +44,49 @@ const Hud = (props) => {
 		return false;
 	}
 
-	function hoverMsgCreation(statString, statAmount){
-
-
-		props.actions.changeHudHoverMsg(`Upgrade ${statString} by 1 for ${statAmount * hudTypes.ATTRIBUTE_UPGRADE_COST} gold`);
-	}
+	
 
 	function hoverMsgDeletion(){
 		
 		props.actions.revertHudHoverMsg();
 	}
 
-	function buyAttributeUpgrade(attrString){
-
-		let goldCost = 0;
-
-		switch(attrString){
+	function getStatLevelsByString(statString){
+		switch(statString){
 			case hudTypes.ATTR_STR:{
-				goldCost = props.player.strength * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+				return [props.player.strength, props.hud.strengthUpgrades];
 			}
 			case hudTypes.ATTR_AGI:{
-				goldCost = props.player.agility * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+				return [props.player.agility, props.hud.agilityUpgrades];
 			}
 			case hudTypes.ATTR_VIT:{
-				goldCost = props.player.vitality * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+				return [props.player.vitality, props.hud.vitalityUpgrades];
 			}
 			case hudTypes.ATTR_INT:{
-				goldCost = props.player.intelligence * hudTypes.ATTRIBUTE_UPGRADE_COST;break;
+				return [props.player.intelligence, props.hud.intelligenceUpgrades];
 			}
 		}
+	}
 
+	function hoverMsgCreation(statString){
+
+		props.actions.changeHudHoverMsg(`Upgrade ${statString} by 1 for ${getStatGoldCost(getStatLevelsByString(statString)[0], getStatLevelsByString(statString)[1])} gold`);
+	}
+
+	function buyAttributeUpgrade(statString){
+
+
+
+		let statLevel = getStatLevelsByString(statString)[0];
+		let statUpgradeLevel = getStatLevelsByString(statString)[1];
+
+		let goldCost = getStatGoldCost(statLevel, statUpgradeLevel);
 		
 		if(props.player.gold < goldCost){
 			return;
 		}
 
-		props.actions.buyAttributeUpgrade(attrString, goldCost);
+		props.actions.buyAttributeUpgrade(statString, statLevel, statUpgradeLevel);
 	}
 
 	

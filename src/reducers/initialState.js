@@ -16,7 +16,12 @@ export default{
 				[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 	],
 	hud:{
-		hoverMsg: "Hover to see upgrade cost"
+		hoverMsg: "Hover to see upgrade cost",
+		displayInventory: false,
+		strengthUpgrades: 1,
+		agilityUpgrades: 1,
+		intelligenceUpgrades: 1,
+		vitalityUpgrades: 1
 	},
 	player: {
 		pos: {x: 4, y: 5},
