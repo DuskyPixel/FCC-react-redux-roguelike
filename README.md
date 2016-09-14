@@ -11,7 +11,8 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-add magic system
+magic text hover description box
+change items border color to yellow when a new item is found when inventory has not been opened
 remove the updatestats per step, should not need to take a step to update stats after equipping/unequipping
 User Story: When I find and beat the boss, I win.
 might be altering state in action creators

@@ -16,7 +16,7 @@ export default{
 				[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 	],
 	hud:{
-		hoverMsg: "Hover to see upgrade cost",
+		hoverMsg: "Hover to see cost of upgrading",
 		displayInventory: false,
 		strengthUpgrades: 1,
 		agilityUpgrades: 1,

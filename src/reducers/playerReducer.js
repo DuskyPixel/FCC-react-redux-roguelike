@@ -17,7 +17,7 @@ switch(action.type)
 	}
 
 	case actionTypes.PLAYER_CAST_SPELL:{
-
+		
 		return Object.assign({}, state, {
 			life : action.healBuff === true ? action.newLife : state.life,
 			attackBuff: action.attackBuff === true ? action.attackBuff : false,
@@ -183,7 +183,7 @@ switch(action.type)
 	}
 
 	case actionTypes.PLAYER_UPDATE_STATS: {
-
+			
 		return Object.assign({},state, {
 			maxLife: action.life,
 			maxMana: action.mana,

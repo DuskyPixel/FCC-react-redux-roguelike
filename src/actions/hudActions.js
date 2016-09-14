@@ -48,7 +48,7 @@ export const castSpell = (player, spell, manaCost) =>{
 	if(newLife > player.maxLife){
 		newLife = player.maxLife;
 	}
-
+	
 	return {
 		type: actionTypes.PLAYER_CAST_SPELL,
 		healBuff: healBuff,

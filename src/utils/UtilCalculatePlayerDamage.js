@@ -20,7 +20,7 @@ export function getPlayerDamage(player) {
 	}
 
 	if(player.attackBuff){
-		damage = Math.ceil( damage * 1 + spellTypes.ATTACK_BUFF_INCREASE );
+		damage = Math.ceil( damage * (1 + spellTypes.ATTACK_BUFF_INCREASE ));
 	}
 
 	return damage;

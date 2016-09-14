@@ -10,8 +10,8 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	
-	width: 210px;
-	height: 100px;
+	width: 212px;
+	height: auto;
 
 	.flexContainer{
 		display: flex;
@@ -19,13 +19,15 @@
 	}
 
 	h6 {
+		margin: 0;
 		text-align: center;
 		color: green;
+		font-size: 90%;
 	}
 
 	.hudAttriButton{
 	width: 88px;	
-	height: 30px;
+	height: 28px;
 
 	text-align: center;
 	

@@ -24,15 +24,12 @@ class PlayerContainer extends Component {
 	}
 
 	componentWillUpdate(nextProps) {
-
 		if(nextProps.player.life <= 0){
 			this.props.actions.playerDied();
 			return;
 		}
 
-		if(nextProps.attackBuff || nextProps.dodgeBuff > 0){
-			this.props.actions.reduceBuff();
-		}
+		
 
 		const PLAYER_POS_TILE_ID = nextProps.tileGrid[nextProps.player.pos.y][nextProps.player.pos.x];
 
@@ -138,6 +135,10 @@ class PlayerContainer extends Component {
 				}
 				else if(tileID >= dungeonTypes.MOBID_RAT && tileID <= dungeonTypes.MOBID_TERRGOTH){
 					this.props.actions.playerAttack(this.props.player, playerX + moveDirection, this.props.monsters);
+					
+						if(this.props.player.attackBuff || this.props.player.dodgeBuff > 0){
+							this.props.actions.reduceBuff();
+						}
 					return;
 				}
 				this.props.actions.moveX(moveDirection);
