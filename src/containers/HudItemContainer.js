@@ -37,7 +37,8 @@ const HudItemContainer = (props) => {
                 <div className="itemButton" onClick={toggleInventory}>
                     Items
                 </div>
-                {props.hud.displayInventory ? <Weapons player={props.player} clickEquip={clickEquip} clickSell={clickSell} /> : null}
+                <Weapons opacity={props.hud.displayInventory ? "maxOpacity" : "zeroOpacity"} player={props.player} clickEquip={clickEquip} clickSell={clickSell} />
+                
                 
             </div>
 

@@ -5,7 +5,7 @@ import getPlayerLife from '../utils/UtilCalculatePlayerLife';
 import getPlayerMana from '../utils/UtilCalculatePlayerMana';
 import OneWeapon from '../components/OneWeapon';
 
-const Weapons = ({player, clickEquip, clickSell}) => {
+const Weapons = ({player, clickEquip, clickSell, opacity}) => {
 
 	const damage = getPlayerDamage(player);
 	const dodge = getPlayerDodge(player);
@@ -19,7 +19,7 @@ const Weapons = ({player, clickEquip, clickSell}) => {
 	}
 
 	return (
-		<div id="weaponContainer">
+		<div id="weaponContainer" className={opacity}>
 			<div className="flexor">
 				<div>Damage: ~{damage}</div>
 				<div>Dodge: {dodge}%</div>
@@ -45,7 +45,8 @@ const Weapons = ({player, clickEquip, clickSell}) => {
 Weapons.propTypes = {
 	player: PropTypes.object.isRequired,
 	clickEquip: PropTypes.func.isRequired,
-	clickSell: PropTypes.func.isRequired
+	clickSell: PropTypes.func.isRequired, 
+	opacity: PropTypes.string.isRequired
 };
 
 export default Weapons;

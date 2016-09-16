@@ -1,5 +1,9 @@
 $potionFontColor : #70A0FF;
 
+.zeroOpacity{
+	opacity: 0;
+}
+
 #itemHudContainer{
 	cursor: default;
 	background: $bgColor;
@@ -55,7 +59,13 @@ $potionFontColor : #70A0FF;
 		}
 	}
 
-	
+	.zeroOpacity{
+		opacity: 0 !important;
+	}
+	.maxOpacity{
+		opacity: 1 !important;
+	}
+
 	#weaponContainer{
 		border: 1px solid navy;
 		color: lightgrey;
