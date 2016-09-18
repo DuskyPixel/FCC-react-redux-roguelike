@@ -10,6 +10,7 @@ import {SND_COIN, SND_DRINK_POTION} from './../constants/audioTypes';
 import getRandInt from '../utils/UtilRandInteger';
 
 import getStatGoldCost from '../utils/UtilCalculateStatUpgradeCost';
+import getHealPercent from '../utils/UtilCalculatePlayerHeal';
 
 export const castSpell = (player, spell, manaCost) =>{
 
@@ -31,8 +32,7 @@ export const castSpell = (player, spell, manaCost) =>{
 
 		case spellTypes.SPELL_HEAL:{
 			healBuff = true;
-			healPercent = getRandInt(spellTypes.HEAL_BUFF_BASE_INCREASE_MIN, spellTypes.HEAL_BUFF_BASE_INCREASE_MAX);
-			healPercent += player.intelligence * spellTypes.HEAL_BUFF_INTELLIGENCE_INCREASE;
+			healPercent = getHealPercent(player.intelligence, false);
 
 		}break;
 

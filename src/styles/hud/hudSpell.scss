@@ -3,7 +3,13 @@
 	position: absolute;
 	top: 115px;
 	background: $bgColor;
-	color: white;
+	color: skyblue;
+	transition: all 0s ease;
+
+	.hoverTest{
+		opacity: 0;
+		height: 0px;
+	}
 
 	img{
 		width: 32px;
@@ -16,7 +22,15 @@
 		opacity: .6;
 	}
 
+	img:hover ~ .hoverTest{
+		opacity: 1;
+		height: auto;
+		width: auto;
+	}
+
 	.spellOn{
 		opacity: 1 !important;
 	}
+
+
 }
