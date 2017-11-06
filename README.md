@@ -1,5 +1,7 @@
 # React Redux Roguelike
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
 This is a [react redux project for freecodecamp](https://www.freecodecamp.com/challenges/build-a-roguelike-dungeon-crawler-game) using a react redux starter kit/boiler plate called [React Slingshot](https://github.com/coryhouse/react-slingshot).
 
 ![Roguelike Screenshot](http://image.prntscr.com/image/8b096729746549ec9c4b6cf2373e332d.png)
@@ -8,10 +10,9 @@ This is a [react redux project for freecodecamp](https://www.freecodecamp.com/ch
 
 
 
-
-
-
-magic text hover description box
+user instructions at start
+can equip multiple weapons at once
+hover effect removing whether spell is on or off display
 change items border color to yellow when a new item is found when inventory has not been opened
 remove the updatestats per step, should not need to take a step to update stats after equipping/unequipping
 User Story: When I find and beat the boss, I win.
