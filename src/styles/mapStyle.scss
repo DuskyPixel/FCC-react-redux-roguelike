@@ -1,6 +1,14 @@
 //transition the transform to try to smooth movement
 $tileSize: 128px;
 
+table {
+  border-spacing: 0 ;
+  border-collapse: collapse ;
+  cell-spacing: 0 ;
+  cell-padding: 0 ;
+}
+
+
 #outerBoundingBox{
 	position: relative;
 	width: 900px;
@@ -38,4 +46,11 @@ td.tile{
     height: 128px;
     position: static;
     display: inline-table;
+}
+td.tile,
+td,
+th, 
+tr {
+	display: inline-block;
+  padding: 0;
 }

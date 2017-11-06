@@ -7,7 +7,6 @@ import * as itemTypes from './../constants/itemTypes';
 
 import {SND_COIN, SND_DRINK_POTION} from './../constants/audioTypes';
 
-import getRandInt from '../utils/UtilRandInteger';
 
 import getStatGoldCost from '../utils/UtilCalculateStatUpgradeCost';
 import getHealPercent from '../utils/UtilCalculatePlayerHeal';
